@@ -1,0 +1,245 @@
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+
+.intro-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.intro-copy h2 {
+  max-width: 13ch;
+}
+
+.intro-copy p {
+  color: var(--ink-soft);
+}
+
+.intro-statements {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.intro-statement {
+  padding: 1.4rem;
+  background: var(--paper);
+}
+
+.intro-statement strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--forest);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.project-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.project-card {
+  position: relative;
+  min-height: 25rem;
+  overflow: hidden;
+  background: var(--forest);
+  color: var(--white);
+  isolation: isolate;
+}
+
+.project-card picture,
+.project-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.project-card img {
+  object-fit: cover;
+  transition: transform 800ms var(--ease);
+}
+
+.project-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(180deg, transparent 35%, rgba(7, 16, 11, 0.9) 100%);
+}
+
+.project-card:hover img {
+  transform: scale(1.035);
+}
+
+.project-card-content {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  padding: 1.4rem;
+}
+
+.project-status {
+  display: inline-flex;
+  margin-bottom: 0.55rem;
+  padding: 0.28rem 0.48rem;
+  background: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-card h3 {
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.7rem, 6vw, 2.4rem);
+}
+
+.project-card p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.85rem;
+}
+
+.services-grid {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.service-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.service-card-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--forest);
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.service-card:hover .service-card-icon {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.service-card h3 {
+  margin-bottom: 0.45rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.approach-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.approach-media {
+  min-height: 25rem;
+  overflow: hidden;
+}
+
+.approach-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.approach-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.approach-copy p {
+  color: var(--ink-soft);
+}
+
+.process-preview {
+  display: grid;
+  gap: 0;
+  counter-reset: process;
+}
+
+.process-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+  counter-increment: process;
+}
+
+.process-step::before {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--moss);
+  content: counter(process, decimal-leading-zero);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+}
+
+.process-step h3 {
+  margin-bottom: 0.35rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.process-step p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.instagram-grid a {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.instagram-grid a:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 1.5;
+}
+
+.instagram-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 650ms var(--ease);
+}
+
+.instagram-grid a:hover img {
+  transform: scale(1.045);
+}
+

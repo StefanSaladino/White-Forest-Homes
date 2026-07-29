@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = false
+
+[build.processing.images]
+  compress = true
+
+# TODO(PROD): Confirm the production domain in Netlify before enabling branch redirects.

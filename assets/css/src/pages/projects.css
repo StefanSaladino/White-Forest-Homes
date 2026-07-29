@@ -1,0 +1,99 @@
+/* =========================================================
+   PROJECTS PAGE
+   ========================================================= */
+
+.filter-bar {
+  display: flex;
+  gap: 0.55rem;
+  padding-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-button {
+  flex: 0 0 auto;
+  min-height: 2.6rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.filter-button[aria-pressed="true"] {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--white);
+}
+
+.projects-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.project-tile[hidden] {
+  display: none;
+}
+
+.project-tile-media {
+  aspect-ratio: 4 / 3;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+.project-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms var(--ease);
+}
+
+.project-tile:hover img {
+  transform: scale(1.03);
+}
+
+.project-tile h2 {
+  margin-bottom: 0.35rem;
+  font-size: 1.8rem;
+}
+
+.project-tile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+}
+
+.featured-case-study {
+  display: grid;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.featured-case-study-media {
+  min-height: 23rem;
+}
+
+.featured-case-study-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-case-study-copy {
+  padding: 2rem;
+}
+
+.featured-case-study-copy p {
+  color: var(--ink-soft);
+}
+

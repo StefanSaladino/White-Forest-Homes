@@ -1,0 +1,26 @@
+# White Forest Homes
+
+White Forest Homes is a residential construction company based in Huntsville, Ontario, serving Muskoka and surrounding communities.
+
+Primary services:
+- Custom home construction
+- Renovations and additions
+- Custom kitchens and interior renovations
+- Decks and outdoor living improvements
+- Framing, flooring, bathroom remodelling, windows, doors and fences
+
+Important pages:
+- Home: https://www.whiteforesthomes.com/
+- Projects: https://www.whiteforesthomes.com/projects.html
+- Services: https://www.whiteforesthomes.com/services.html
+- Process: https://www.whiteforesthomes.com/process.html
+- About: https://www.whiteforesthomes.com/about.html
+- Contact: https://www.whiteforesthomes.com/contact.html
+- Privacy: https://www.whiteforesthomes.com/privacy.html
+
+Contact:
+- Phone: +1-705-970-6325
+- Email: Whiteforesthomes@hotmail.com
+- Instagram: https://www.instagram.com/the_white_forests/
+
+TODO(PROD): Update this file after real projects, company history, credentials and the final domain email are approved.

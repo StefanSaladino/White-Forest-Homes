@@ -1,0 +1,7 @@
+# Preserve current public routes during the redesign migration.
+/services  /services.html  301
+/contact   /contact.html   301
+/home      /               301
+
+# Netlify fallback for unknown static routes.
+/*  /404.html  404

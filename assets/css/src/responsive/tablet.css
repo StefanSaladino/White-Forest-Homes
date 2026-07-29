@@ -1,0 +1,82 @@
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 42rem) {
+  .container {
+    width: min(calc(100% - 3rem), var(--container));
+  }
+
+  .page-hero-copy {
+    padding-inline: 1.5rem;
+  }
+
+  .intro-grid,
+  .approach-grid,
+  .contact-layout,
+  .service-detail-grid,
+  .legal-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-grid,
+  .projects-list,
+  .service-listing,
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-card:nth-child(odd) {
+    padding-right: 1.5rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .service-card:nth-child(even) {
+    padding-left: 1.5rem;
+  }
+
+  .capability-grid,
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field--full {
+    grid-column: 1 / -1;
+  }
+
+  .featured-case-study {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+
+  .cookie-banner {
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: auto;
+    width: min(31rem, calc(100% - 3rem));
+    padding: 1.5rem;
+  }
+
+  .cookie-actions,
+  .cookie-dialog-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cookie-actions .button:first-child,
+  .cookie-dialog-actions .button:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.4fr 0.7fr 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+

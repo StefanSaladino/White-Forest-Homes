@@ -1,0 +1,28 @@
+/* =========================================================
+   WHITE FOREST HOMES — MOBILE-FIRST DESIGN SYSTEM
+   TODO(PROD): Confirm the final brand palette and typography.
+   ========================================================= */
+
+:root {
+  --ink: #172019;
+  --ink-soft: #4b554e;
+  --forest: #173528;
+  --forest-2: #244838;
+  --moss: #6f8273;
+  --sage: #aab6a7;
+  --paper: #f6f3ec;
+  --paper-2: #eee9df;
+  --white: #fffdf8;
+  --line: rgba(23, 53, 40, 0.16);
+  --shadow-sm: 0 14px 34px rgba(23, 32, 25, 0.08);
+  --shadow-lg: 0 28px 70px rgba(10, 22, 16, 0.18);
+  --radius-sm: 0.45rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.4rem;
+  --container: 76rem;
+  --header-height: 4.75rem;
+  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+

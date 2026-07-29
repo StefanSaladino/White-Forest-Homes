@@ -1,0 +1,20 @@
+# White Forest Homes robots policy
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+# Explicitly permit common AI/search crawlers to access public marketing pages.
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.whiteforesthomes.com/sitemap.xml

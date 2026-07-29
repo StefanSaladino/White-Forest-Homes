@@ -1,0 +1,322 @@
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 64rem) {
+  :root {
+    --header-height: 5.4rem;
+  }
+
+  .nav-toggle,
+  .site-nav-meta {
+    display: none;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    overflow: visible;
+    transform: none;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .site-nav-list li,
+  .site-nav-meta > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .site-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+  }
+
+  .site-nav a {
+    position: relative;
+    display: block;
+    padding: 0.65rem 0;
+    border: 0;
+    font-family: var(--sans);
+    font-size: 0.76rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+  }
+
+  .site-nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0.2rem;
+    left: 0;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: right;
+    content: "";
+    background: var(--forest);
+    transition: transform 220ms var(--ease);
+  }
+
+  .site-nav a:hover::after,
+  .site-nav a[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .header-cta {
+    display: inline-flex;
+  }
+
+  .hero {
+    min-height: min(50rem, calc(100svh - var(--header-height)));
+    align-items: center;
+  }
+
+  .hero-content {
+    padding-block: 7rem;
+  }
+
+  .hero::after {
+    background: linear-gradient(90deg, rgba(7, 18, 12, 0.92) 0%, rgba(7, 18, 12, 0.64) 42%, rgba(7, 18, 12, 0.08) 72%);
+  }
+
+  .hero-media img {
+    object-position: center;
+  }
+
+  .page-hero-grid {
+    min-height: 30rem;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .page-hero-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem max(3rem, calc((100vw - var(--container)) / 2));
+    padding-right: 3rem;
+  }
+
+  .page-hero-media {
+    min-height: 100%;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 5rem;
+    align-items: end;
+  }
+
+  .project-grid {
+    grid-template-columns: 1.25fr 0.75fr 0.75fr;
+  }
+
+  .project-card:first-child {
+    min-height: 32rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .service-card {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .service-card:first-child {
+    padding-left: 0;
+  }
+
+  .service-card:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .approach-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .approach-copy {
+    padding: 4rem;
+    background: var(--white);
+  }
+
+  .process-preview {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .process-step {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .process-step:first-child {
+    padding-left: 0;
+  }
+
+  .process-step:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .instagram-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  .instagram-grid a:first-child {
+    grid-column: auto;
+    aspect-ratio: 1;
+  }
+
+  .projects-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem 1.25rem;
+  }
+
+  .project-tile:nth-child(5n + 1) {
+    grid-column: span 2;
+  }
+
+  .project-tile:nth-child(5n + 1) .project-tile-media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .service-listing {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .capability-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .service-detail-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.5fr);
+    gap: 5rem;
+  }
+
+  .service-detail-aside {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+  }
+
+  .timeline {
+    max-width: 58rem;
+    margin-inline: auto;
+  }
+
+  .timeline-item {
+    grid-template-columns: 5rem 1fr;
+    gap: 2rem;
+    padding-block: 2.25rem;
+  }
+
+  .timeline::before {
+    left: 2.45rem;
+  }
+
+  .timeline-number {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.55rem;
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .value-card {
+    min-height: 17rem;
+    padding: 2rem;
+  }
+
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(19rem, 0.65fr);
+    gap: clamp(3rem, 5vw, 5rem);
+  }
+
+  .direct-contact-card {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+  }
+
+  .legal-layout {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: 5rem;
+  }
+
+  .legal-nav {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    display: block;
+    align-self: start;
+  }
+
+  .legal-nav a {
+    display: block;
+    padding-block: 0.55rem;
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+
+  .legal-nav a:hover {
+    color: var(--forest);
+  }
+}
+
+/* Keep the monochrome tree mark visible on the dark footer background. */
+.site-footer .brand-mark {
+  filter: brightness(0) invert(1);
+}
+
+/* Small reusable spacing/alignment utilities keep HTML free of inline styles. */
+.u-margin-top-1-5 {
+  margin-top: 1.5rem;
+}
+
+.u-margin-top-2 {
+  margin-top: 2rem;
+}
+
+.u-margin-bottom-1-5 {
+  margin-bottom: 1.5rem;
+}
+
+.u-justify-center {
+  justify-content: center;
+}
+
+.project-status--light {
+  background: var(--paper-2);
+  color: var(--ink-soft);
+}
+
+/* Project image, gradient and copy use explicit stacking layers. */
+.project-card picture {
+  z-index: 0;
+}
+
+.project-card::after {
+  z-index: 1;
+}
+
+.project-card-content {
+  z-index: 2;
+}

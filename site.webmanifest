@@ -1,0 +1,16 @@
+{
+  "name": "White Forest Homes",
+  "short_name": "White Forest",
+  "description": "Custom homes and renovations in Huntsville and Muskoka.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f3ec",
+  "theme_color": "#173528",
+  "icons": [
+    {
+      "src": "/assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

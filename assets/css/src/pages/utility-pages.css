@@ -1,0 +1,42 @@
+/* =========================================================
+   PRIVACY, THANK-YOU & 404
+   ========================================================= */
+
+.legal-layout {
+  display: grid;
+  gap: 2rem;
+}
+
+.legal-nav {
+  display: none;
+}
+
+.legal-note {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-left: 3px solid var(--moss);
+  background: var(--paper-2);
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.status-page {
+  min-height: calc(100svh - var(--header-height));
+  display: grid;
+  place-items: center;
+  padding-block: 5rem;
+  text-align: center;
+}
+
+.status-page-inner {
+  max-width: 42rem;
+}
+
+.status-page h1 {
+  margin-bottom: 1rem;
+}
+
+.status-page p {
+  color: var(--ink-soft);
+}
+

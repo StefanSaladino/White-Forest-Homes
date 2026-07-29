@@ -1,0 +1,208 @@
+/* =========================================================
+   ACCESSIBILITY & GLOBAL UTILITIES
+   ========================================================= */
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  transform: translateY(-160%);
+  background: var(--white);
+  color: var(--forest);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.container {
+  /* Slightly wider mobile gutters keep text and controls away from the viewport edge. */
+  width: min(calc(100% - 2.5rem), var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(4.5rem, 12vw, 8rem);
+}
+
+.section--compact {
+  padding-block: clamp(3rem, 8vw, 5rem);
+}
+
+.section--white {
+  background: var(--white);
+}
+
+.section--forest {
+  background: var(--forest);
+  color: var(--white);
+}
+
+.section--paper-2 {
+  background: var(--paper-2);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+  color: var(--moss);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 1.5rem;
+  height: 1px;
+  content: "";
+  background: currentColor;
+}
+
+.section-heading {
+  max-width: 46rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-heading p {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: var(--ink-soft);
+}
+
+.section--forest .section-heading p {
+  color: rgba(255, 253, 248, 0.72);
+}
+
+.prose {
+  max-width: 48rem;
+}
+
+.prose h2,
+.prose h3 {
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-soft);
+}
+
+.prose a {
+  color: var(--forest);
+  font-weight: 650;
+}
+
+.list-clean {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--forest);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.text-link svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: transform 220ms var(--ease);
+}
+
+.text-link:hover svg {
+  transform: translateX(0.25rem);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: var(--forest);
+  color: var(--white);
+  font-size: 0.73rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms var(--ease);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: var(--forest-2);
+}
+
+.button--light {
+  background: var(--white);
+  color: var(--forest);
+}
+
+.button--outline {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.button--outline:hover {
+  border-color: var(--forest);
+  background: var(--forest);
+  color: var(--white);
+}
+
+.button--outline-light {
+  border-color: rgba(255, 255, 255, 0.48);
+  background: transparent;
+  color: var(--white);
+}
+
+.button--outline-light:hover {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--forest);
+}
+
+.icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.55;
+}
+

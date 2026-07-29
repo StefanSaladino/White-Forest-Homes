@@ -1,0 +1,12 @@
+{
+  "name": "white-forest-homes-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mobile-first static redesign for White Forest Homes.",
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "validate": "node scripts/validate-site.mjs",
+    "check:js": "node --check assets/js/boot.v1.js && node --check assets/js/tracking-config.v1.js && node --check assets/js/consent.v1.js && node --check assets/js/script.v1.js",
+    "check:todos": "node scripts/list-prod-todos.mjs"
+  }
+}

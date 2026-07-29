@@ -1,0 +1,90 @@
+/* =========================================================
+   PROCESS & ABOUT
+   ========================================================= */
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 2rem;
+  bottom: 2rem;
+  left: 1.55rem;
+  width: 1px;
+  content: "";
+  background: var(--line);
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 1.1rem;
+  padding-block: 1.5rem;
+}
+
+.timeline-number {
+  z-index: 1;
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--moss);
+  font-family: var(--serif);
+  font-size: 1.2rem;
+}
+
+.timeline-item h2 {
+  margin-bottom: 0.45rem;
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.timeline-item p {
+  color: var(--ink-soft);
+}
+
+.values-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+}
+
+.value-card {
+  padding: 1.5rem;
+  background: var(--white);
+}
+
+.value-card span {
+  display: block;
+  margin-bottom: 1.2rem;
+  color: var(--moss);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+}
+
+.value-card p {
+  color: var(--ink-soft);
+}
+
+.service-area-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.service-area-list li {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+}
+
