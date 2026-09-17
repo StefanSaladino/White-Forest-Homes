@@ -1,0 +1,12 @@
+[
+  {"name":"woodland-home","id":35264654,"photographer":"Kevin Yung","widths":[640,960,1600,2400,3200],"ratio":[3,2],"alt":"Illustrative photo of a dark-clad woodland cabin with large windows and a timber deck"},
+  {"name":"woodland-home-mobile","id":35264654,"photographer":"Kevin Yung","widths":[480,800,1200],"ratio":[2,3],"alt":"Illustrative photo of a dark-clad woodland cabin with large windows and a timber deck"},
+  {"name":"winter-home","id":11616132,"photographer":"Chris F","widths":[480,960,1600,2400],"ratio":[4,3],"alt":"Illustrative photo of a contemporary timber home surrounded by snowy evergreens"},
+  {"name":"kitchen-island","id":4800189,"photographer":"Curtis Adams","widths":[480,960,1600,2400],"ratio":[4,3],"alt":"Illustrative photo of a grey kitchen with a stone island, brass pendants and wood flooring"},
+  {"name":"timber-cabins","id":34923424,"photographer":"Helen1","widths":[480,960,1600,2400],"ratio":[4,3],"alt":"Illustrative photo of timber A-frame cabins with metal roofs among winter trees"},
+  {"name":"open-plan-renovation","id":4800185,"photographer":"Curtis Adams","widths":[480,960,1600,2400],"ratio":[4,3],"alt":"Illustrative photo of an open kitchen connected to a living room with a fireplace and built-in shelving"},
+  {"name":"lakeside-deck","id":19402460,"photographer":"Arthur Shuraev","widths":[480,960,1600,2400],"ratio":[4,3],"alt":"Illustrative photo of a broad timber deck with railings overlooking a lake"},
+  {"name":"modern-living","id":1571460,"photographer":"Viaceslav Kat","widths":[480,960,1600,2400],"ratio":[4,3],"alt":"Illustrative photo of a bright living room with a neutral sofa, wood staircase and large windows"},
+  {"name":"waterfront-seating","id":38282488,"photographer":"Zak Mogel","widths":[480,800,1200,1600],"ratio":[2,3],"alt":"Illustrative photo of lounge chairs on a timber platform beside the water"},
+  {"name":"project-planning","id":34573691,"photographer":"Marina Zvada","widths":[480,800,1200,1600],"ratio":[3,4],"alt":"Architectural drawings showing floor plans and building elevations"}
+]

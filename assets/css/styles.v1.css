@@ -1022,6 +1022,14 @@ body.nav-open::before {
   aspect-ratio: 1.5;
 }
 
+.instagram-grid picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .instagram-grid img {
   width: 100%;
   height: 100%;
