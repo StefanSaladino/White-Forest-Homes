@@ -16,22 +16,22 @@ const canonicalURLs = new Set();
 const documents = new Map(await Promise.all(htmlFiles.map(async (file) => [file, await readFile(join(root, file), "utf8")])));
 
 const expectedStylesheets = [
-  "assets/css/src/tokens.css?v=2",
-  "assets/css/src/base/foundations.css?v=2",
-  "assets/css/src/base/global.css?v=2",
-  "assets/css/src/components/navigation.css?v=2",
-  "assets/css/src/components/heroes.css?v=2",
-  "assets/css/src/pages/home.css?v=2",
-  "assets/css/src/pages/projects.css?v=2",
-  "assets/css/src/pages/services.css?v=2",
-  "assets/css/src/pages/process-about.css?v=2",
-  "assets/css/src/pages/contact.css?v=2",
-  "assets/css/src/components/cta-footer.css?v=2",
-  "assets/css/src/components/consent.css?v=2",
-  "assets/css/src/pages/utility-pages.css?v=2",
-  "assets/css/src/components/animations.css?v=2",
-  "assets/css/src/responsive/tablet.css?v=2",
-  "assets/css/src/responsive/desktop.css?v=2",
+  "assets/css/src/tokens.css?v=3",
+  "assets/css/src/base/foundations.css?v=3",
+  "assets/css/src/base/global.css?v=3",
+  "assets/css/src/components/navigation.css?v=3",
+  "assets/css/src/components/heroes.css?v=3",
+  "assets/css/src/pages/home.css?v=3",
+  "assets/css/src/pages/projects.css?v=3",
+  "assets/css/src/pages/services.css?v=3",
+  "assets/css/src/pages/process-about.css?v=3",
+  "assets/css/src/pages/contact.css?v=3",
+  "assets/css/src/components/cta-footer.css?v=3",
+  "assets/css/src/components/consent.css?v=3",
+  "assets/css/src/pages/utility-pages.css?v=3",
+  "assets/css/src/components/animations.css?v=3",
+  "assets/css/src/responsive/tablet.css?v=3",
+  "assets/css/src/responsive/desktop.css?v=3",
 ];
 
 function matches(text, expression) {

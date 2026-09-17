@@ -42,3 +42,11 @@ Run the commands documented in `README.md`. Browser output is stored in `.audit-
 - Google IDs remain placeholders. Measurement behavior was tested using local mocks; no production Google Analytics/Ads configuration or live conversion delivery is claimed.
 - Existing concept photography and project labels remain concept material. The production content and business approvals already listed in `TODO-PRODUCTION.md` still apply.
 - Production canonicals remain on the intended business domain. Social images use the GitHub preview asset URL; update those when the production asset domain is ready.
+
+## Photography refresh — 2026-09-17
+
+Replaced all 35 in-page photographic placements with nine high-resolution Pexels originals, exported as 40 local responsive WebP assets. The originals range from 2560 to 6164 pixels wide. The homepage includes a separate portrait crop for small screens; planning, kitchen, renovation, deck and contact sections now use images matched to their content. Source credits and regeneration details are in `PHOTO-CREDITS.md`.
+
+Removed the superseded soft WebP variants. Updated alternative text, intrinsic dimensions and responsive sources; new asset URLs avoid stale caches. Preserved the sharp branded social card and vector identity. Fixed the homepage photo-strip picture containers so all three images fill their tiles evenly; bumped CSS cache versions to 3.
+
+Validation: the photography replacement passed the existing 169 viewport cases, 26 page accessibility scans and 13 interaction groups with no reported failures. After the photo-strip adjustment, a focused pass checked 24 page/viewport combinations at 2× device scale, decoded every displayed photo, verified all 40 exported image dimensions, and confirmed aligned desktop photo-strip heights. Reviewed mobile and desktop hero and gallery screenshots. Static site validation and whitespace checks passed.

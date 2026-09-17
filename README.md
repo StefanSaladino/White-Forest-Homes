@@ -122,17 +122,17 @@ The thank-you page only attempts lead events after a recent form submission mark
 
 ## Asset replacement
 
-Temporary imagery is stored in `assets/images/`. When real project photography arrives:
+Illustrative stock photography is stored in `assets/images/photos/`. See [PHOTO-CREDITS.md](PHOTO-CREDITS.md) for sources and regeneration instructions. When real project photography arrives:
 
-1. Create 480, 768, 800, 1200 and 1800 pixel WebP variants where used.
-2. Keep the existing filenames or update each HTML `src`/`srcset` reference.
+1. Generate responsive WebP variants from full-resolution originals using `scripts/build-photos.mjs` and the source manifest.
+2. Use new filenames when changing photographs, then update each HTML `src`/`srcset` reference to avoid stale immutable caches.
 3. Preserve accurate intrinsic `width` and `height` attributes.
 4. Rewrite the alt text to describe the real image.
 5. Replace the Open Graph image with a final 1200×630 JPG.
 
 ## Cache/versioning
 
-The modular CSS links use a shared query version such as `?v=2`, while JavaScript uses versioned filenames such as `script.v2.js`. When CSS changes are deployed, increment the CSS query version in every HTML page so Netlify's immutable asset cache receives a new URL. Increment JavaScript filenames when those assets change.
+The modular CSS links use a shared query version such as `?v=3`, while JavaScript uses versioned filenames such as `script.v2.js`. When CSS changes are deployed, increment the CSS query version in every HTML page so Netlify's immutable asset cache receives a new URL. Increment JavaScript filenames when those assets change.
 
 ## Current public details used
 
