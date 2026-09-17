@@ -1,6 +1,6 @@
 # White Forest Homes Redesign
 
-A complete mobile-first, dependency-free static website for White Forest Homes. The design translates the approved editorial Muskoka concept into production-oriented HTML, CSS and JavaScript with local temporary imagery, structured SEO data, a privacy page, a consent preference centre and Google measurement hooks.
+A complete mobile-first static website with no runtime dependencies for White Forest Homes. The design translates the approved editorial Muskoka concept into production-oriented HTML, CSS and JavaScript with local temporary imagery, structured SEO data, a privacy page, a consent preference centre and Google measurement hooks.
 
 ## Important status
 
@@ -68,11 +68,25 @@ npm run validate
 npm run check:todos
 ```
 
-`npm run validate` checks internal file references, SEO essentials, one H1 per page, JSON-LD parsing and image dimensions.
+`npm run validate` checks internal links and fragments (including SVG symbols), responsive-image references, duplicate IDs/titles/canonicals, accessible names and references, metadata, JSON-LD, CSP-incompatible inline styles, and manifest paths.
+
+For the responsive and interaction regression suite:
+
+```bash
+npm ci
+npx playwright install chromium
+npm run test:browser
+# Optional screenshots of the main layouts:
+npm run test:browser -- --screenshots
+```
+
+The browser suite covers 13 pages at 13 viewport sizes, axe accessibility checks, menus, focus, anchors, filters, cookie preferences, form validation, no-JavaScript navigation and nested 404 routes. It starts its own local test server. Results are written to the ignored `.audit-results/` directory. A locally installed Chromium executable can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`.
+
+See [AUDIT.md](AUDIT.md) for the verified scope and remaining production dependencies.
 
 ## Google Analytics and Google Ads setup
 
-Edit `assets/js/tracking-config.v1.js`:
+Edit `assets/js/tracking-config.v2.js`:
 
 ```js
 window.WFH_TRACKING_CONFIG = Object.freeze({
@@ -102,7 +116,9 @@ The contact form uses Netlify Forms markup:
 >
 ```
 
-After the first Netlify deploy, configure form notifications in Netlify and complete an end-to-end test. A different host will require a different form handler.
+On GitHub Pages and localhost, the submit button reads “Prepare email inquiry”: it opens a populated email draft, which the visitor must send in their email app. It does not claim a server submission succeeded. On other hosts, the existing Netlify POST remains in place. After the first Netlify deploy, configure form notifications and complete an end-to-end test. Other production hosts require a form handler.
+
+The thank-you page only attempts lead events after a recent form submission marker in the same browser tab; direct visits and reloads are not counted. Google IDs remain placeholders.
 
 ## Asset replacement
 
@@ -116,7 +132,7 @@ Temporary imagery is stored in `assets/images/`. When real project photography a
 
 ## Cache/versioning
 
-The modular CSS links use a shared query version such as `?v=1`, while JavaScript uses versioned filenames such as `script.v1.js`. When CSS changes are deployed, increment the CSS query version in every HTML page so Netlify's immutable asset cache receives a new URL. Increment JavaScript filenames when those assets change.
+The modular CSS links use a shared query version such as `?v=2`, while JavaScript uses versioned filenames such as `script.v2.js`. When CSS changes are deployed, increment the CSS query version in every HTML page so Netlify's immutable asset cache receives a new URL. Increment JavaScript filenames when those assets change.
 
 ## Current public details used
 

@@ -8,7 +8,18 @@
 }
 
 .legal-nav {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.85rem;
 }
 
 .legal-note {
@@ -39,4 +50,3 @@
 .status-page p {
   color: var(--ink-soft);
 }
-

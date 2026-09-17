@@ -8,7 +8,8 @@
   --ink-soft: #4b554e;
   --forest: #173528;
   --forest-2: #244838;
-  --moss: #6f8273;
+  --moss: #526657;
+  --sage-dark: #526657;
   --sage: #aab6a7;
   --paper: #f6f3ec;
   --paper-2: #eee9df;
@@ -25,4 +26,3 @@
   --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
-

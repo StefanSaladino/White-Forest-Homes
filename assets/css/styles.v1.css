@@ -8,7 +8,8 @@
   --ink-soft: #4b554e;
   --forest: #173528;
   --forest-2: #244838;
-  --moss: #6f8273;
+  --moss: #526657;
+  --sage-dark: #526657;
   --sage: #aab6a7;
   --paper: #f6f3ec;
   --paper-2: #eee9df;
@@ -25,7 +26,6 @@
   --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 /* =========================================================
    RESET & FOUNDATIONS
    ========================================================= */
@@ -38,24 +38,35 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-block-start: calc(var(--header-height) + 1rem);
   text-size-adjust: 100%;
   scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
-  min-width: 20rem;
+  min-width: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 1rem;
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
+html.nav-open,
+html.modal-open,
 body.nav-open,
 body.modal-open {
   overflow: hidden;
+}
+
+main,
+section,
+article,
+aside,
+.container > * {
+  min-width: 0;
 }
 
 img,
@@ -130,7 +141,7 @@ p:last-child {
 }
 
 :focus-visible {
-  outline: 3px solid #b98a4a;
+  outline: 3px solid currentColor;
   outline-offset: 4px;
 }
 
@@ -142,7 +153,6 @@ p:last-child {
 [hidden] {
   display: none !important;
 }
-
 /* =========================================================
    ACCESSIBILITY & GLOBAL UTILITIES
    ========================================================= */
@@ -256,6 +266,7 @@ p:last-child {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  min-height: 2.75rem;
   color: var(--forest);
   font-size: 0.78rem;
   font-weight: 700;
@@ -267,6 +278,7 @@ p:last-child {
 .text-link svg {
   width: 1rem;
   height: 1rem;
+  flex-shrink: 0;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -317,6 +329,18 @@ p:last-child {
   color: var(--forest);
 }
 
+.button--light:hover {
+  background: var(--paper-2);
+  color: var(--forest);
+}
+
+.section--forest .eyebrow,
+.service-detail-aside .eyebrow,
+.site-cta .eyebrow,
+.page-hero--dark .eyebrow {
+  color: #cbd6cb;
+}
+
 .button--outline {
   border-color: var(--line);
   background: transparent;
@@ -350,7 +374,6 @@ p:last-child {
   stroke-linejoin: round;
   stroke-width: 1.55;
 }
-
 /* =========================================================
    HEADER & MOBILE NAVIGATION
    ========================================================= */
@@ -362,7 +385,6 @@ p:last-child {
   height: var(--header-height);
   border-bottom: 1px solid transparent;
   background: rgba(246, 243, 236, 0.95);
-  backdrop-filter: blur(16px);
   transition:
     border-color 180ms ease,
     box-shadow 180ms ease;
@@ -518,6 +540,7 @@ body.nav-open::before {
   z-index: 2;
   display: flex;
   width: min(100%, 28rem);
+  height: calc(100vh - var(--header-height));
   height: calc(100dvh - var(--header-height));
   flex-direction: column;
   gap: 2rem;
@@ -606,6 +629,7 @@ body.nav-open::before {
 }
 
 .site-nav-meta a {
+  min-height: 2.75rem;
   padding: 0;
   border: 0;
   font-family: var(--sans);
@@ -709,6 +733,7 @@ body.nav-open::before {
 }
 
 .page-hero-copy h1 {
+  font-size: clamp(2.35rem, 4.6vw, 4.5rem);
   max-width: 13ch;
   margin-bottom: 1rem;
 }
@@ -719,6 +744,7 @@ body.nav-open::before {
 }
 
 .page-hero-media {
+  position: relative;
   min-height: 18rem;
 }
 
@@ -729,6 +755,8 @@ body.nav-open::before {
 }
 
 .page-hero-media img {
+  position: absolute;
+  inset: 0;
   object-fit: cover;
 }
 
@@ -740,7 +768,6 @@ body.nav-open::before {
 .page-hero--dark .page-hero-copy p {
   color: rgba(255, 255, 255, 0.72);
 }
-
 /* =========================================================
    HOME PAGE
    ========================================================= */
@@ -824,6 +851,19 @@ body.nav-open::before {
   padding: 1.4rem;
 }
 
+.project-card h3 a {
+  text-decoration: none;
+}
+
+.project-card h3 a:hover {
+  text-decoration: underline;
+}
+
+.project-card:focus-within {
+  outline: 3px solid var(--forest);
+  outline-offset: 4px;
+}
+
 .project-status {
   display: inline-flex;
   margin-bottom: 0.55rem;
@@ -897,11 +937,14 @@ body.nav-open::before {
 }
 
 .approach-media {
+  position: relative;
   min-height: 25rem;
   overflow: hidden;
 }
 
 .approach-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -911,6 +954,10 @@ body.nav-open::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.approach-copy h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
 }
 
 .approach-copy p {
@@ -985,16 +1032,16 @@ body.nav-open::before {
 .instagram-grid a:hover img {
   transform: scale(1.045);
 }
-
 /* =========================================================
    PROJECTS PAGE
    ========================================================= */
 
 .filter-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.55rem;
   padding-bottom: 1.5rem;
-  overflow-x: auto;
+  overflow: visible;
   scrollbar-width: none;
 }
 
@@ -1004,7 +1051,7 @@ body.nav-open::before {
 
 .filter-button {
   flex: 0 0 auto;
-  min-height: 2.6rem;
+  min-height: 2.75rem;
   padding: 0.65rem 0.9rem;
   border: 1px solid var(--line);
   background: transparent;
@@ -1068,23 +1115,31 @@ body.nav-open::before {
 }
 
 .featured-case-study-media {
+  position: relative;
   min-height: 23rem;
 }
 
 .featured-case-study-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .featured-case-study-copy {
-  padding: 2rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
 }
+
+.featured-case-study-copy h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+html:not(.js) .filter-bar { display: none; }
 
 .featured-case-study-copy p {
   color: var(--ink-soft);
 }
-
 /* =========================================================
    SERVICES & SERVICE DETAIL PAGES
    ========================================================= */
@@ -1186,6 +1241,10 @@ body.nav-open::before {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.service-detail-aside h2 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+}
+
 .service-detail-aside ul {
   display: grid;
   gap: 0.8rem;
@@ -1246,7 +1305,6 @@ body.nav-open::before {
   padding-bottom: 1.25rem;
   color: var(--ink-soft);
 }
-
 /* =========================================================
    PROCESS & ABOUT
    ========================================================= */
@@ -1357,6 +1415,7 @@ body.nav-open::before {
 }
 
 .field {
+  min-width: 0;
   display: grid;
   gap: 0.45rem;
 }
@@ -1384,6 +1443,14 @@ body.nav-open::before {
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+.field input,
+.field select,
+.field textarea {
+  min-width: 0;
+  max-width: 100%;
+  font-size: 1rem;
 }
 
 .field textarea {
@@ -1476,7 +1543,7 @@ body.nav-open::before {
 }
 
 .direct-contact-card__section {
-  padding: clamp(1.4rem, 4vw, 2rem);
+  padding: clamp(1rem, 3vw, 1.75rem);
   border-bottom: 1px solid rgba(27, 48, 37, 0.12);
 }
 
@@ -1516,9 +1583,9 @@ body.nav-open::before {
   min-width: 0;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.85rem;
+  gap: 0.65rem;
   align-items: center;
-  padding: 1rem;
+  padding: 0.8rem;
   border: 1px solid rgba(27, 48, 37, 0.13);
   background: var(--paper);
   color: var(--ink);
@@ -1671,7 +1738,6 @@ body.nav-open::before {
     display: none;
   }
 }
-
 /* =========================================================
    CTA & FOOTER
    ========================================================= */
@@ -1686,6 +1752,11 @@ body.nav-open::before {
 .site-cta-media {
   position: absolute;
   inset: 0;
+}
+
+.site-cta-media picture {
+  display: block;
+  height: 100%;
 }
 
 .site-cta-media img {
@@ -1750,7 +1821,17 @@ body.nav-open::before {
 
 .footer-links {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.1rem;
+}
+
+.footer-links a,
+.footer-contact a,
+.footer-legal a,
+.cookie-settings-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  overflow-wrap: anywhere;
 }
 
 .footer-links a,
@@ -1773,7 +1854,7 @@ body.nav-open::before {
 
 .footer-contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.7rem;
 }
 
@@ -1781,7 +1862,6 @@ body.nav-open::before {
   width: 1.1rem;
   height: 1.1rem;
   flex: 0 0 auto;
-  margin-top: 0.2rem;
 }
 
 .social-link {
@@ -1805,7 +1885,7 @@ body.nav-open::before {
   margin-top: 3rem;
   padding-top: 1.2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.72rem;
 }
 
@@ -1825,7 +1905,6 @@ body.nav-open::before {
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
-
 /* =========================================================
    COOKIE CONSENT & PREFERENCE DIALOG
    The interface defaults all non-essential tracking to denied.
@@ -1842,6 +1921,15 @@ body.nav-open::before {
   background: #10271d;
   color: var(--white);
   box-shadow: var(--shadow-lg);
+  max-height: calc(100vh - 1.5rem);
+  max-height: calc(100dvh - 1.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.nav-open .cookie-banner {
+  visibility: hidden;
 }
 
 .cookie-banner h2 {
@@ -1873,7 +1961,10 @@ body.nav-open::before {
 
 .cookie-dialog {
   width: min(calc(100% - 2rem), 40rem);
+  max-height: calc(100vh - 2rem);
   max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 0;
   border: 0;
   background: var(--paper);
@@ -1900,7 +1991,7 @@ body.nav-open::before {
 
 .cookie-dialog-header h2 {
   margin-bottom: 0.4rem;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
 .icon-button {
@@ -1935,18 +2026,23 @@ body.nav-open::before {
 .switch {
   position: relative;
   width: 3rem;
-  height: 1.7rem;
+  min-height: 2.75rem;
   margin-top: 0.2rem;
 }
 
 .switch input {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   opacity: 0;
 }
 
 .switch-track {
   position: absolute;
-  inset: 0;
+  pointer-events: none;
+  inset: 0.5rem 0;
   border-radius: 999px;
   background: #b8bdb8;
   transition: background 180ms ease;
@@ -1974,7 +2070,7 @@ body.nav-open::before {
 }
 
 .switch input:focus-visible + .switch-track {
-  outline: 3px solid #b98a4a;
+  outline: 3px solid var(--forest);
   outline-offset: 3px;
 }
 
@@ -1989,7 +2085,6 @@ body.nav-open::before {
   padding-top: 1.2rem;
   border-top: 1px solid var(--line);
 }
-
 /* =========================================================
    PRIVACY, THANK-YOU & 404
    ========================================================= */
@@ -2000,7 +2095,18 @@ body.nav-open::before {
 }
 
 .legal-nav {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.85rem;
 }
 
 .legal-note {
@@ -2031,7 +2137,6 @@ body.nav-open::before {
 .status-page p {
   color: var(--ink-soft);
 }
-
 /* =========================================================
    REVEAL ANIMATIONS
    Progressive enhancement: content remains visible without JS.
@@ -2050,6 +2155,11 @@ body.nav-open::before {
   transform: translateY(0);
 }
 
+.js [data-reveal]:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -2059,7 +2169,7 @@ body.nav-open::before {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
@@ -2069,7 +2179,6 @@ body.nav-open::before {
     transform: none;
   }
 }
-
 /* =========================================================
    TABLET
    ========================================================= */
@@ -2084,10 +2193,7 @@ body.nav-open::before {
   }
 
   .intro-grid,
-  .approach-grid,
-  .contact-layout,
-  .service-detail-grid,
-  .legal-layout {
+  .approach-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2121,7 +2227,7 @@ body.nav-open::before {
   }
 
   .featured-case-study {
-    grid-template-columns: 1.25fr 0.75fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .cookie-banner {
@@ -2143,7 +2249,7 @@ body.nav-open::before {
   }
 
   .footer-grid {
-    grid-template-columns: 1.4fr 0.7fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .footer-bottom {
@@ -2151,7 +2257,6 @@ body.nav-open::before {
     justify-content: space-between;
   }
 }
-
 /* =========================================================
    DESKTOP
    ========================================================= */
@@ -2251,14 +2356,14 @@ body.nav-open::before {
 
   .page-hero-grid {
     min-height: 30rem;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .page-hero-copy {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5rem max(3rem, calc((100vw - var(--container)) / 2));
+    padding: 4rem max(1.5rem, calc((100vw - var(--container)) / 2));
     padding-right: 3rem;
   }
 
@@ -2306,7 +2411,7 @@ body.nav-open::before {
   }
 
   .approach-copy {
-    padding: 4rem;
+    padding: clamp(2rem, 4vw, 4rem);
     background: var(--white);
   }
 
@@ -2339,6 +2444,11 @@ body.nav-open::before {
     aspect-ratio: 1;
   }
 
+  .instagram-grid a:not(:first-child) {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
   .projects-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2.5rem 1.25rem;
@@ -2353,7 +2463,7 @@ body.nav-open::before {
   }
 
   .service-listing {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .capability-grid {
@@ -2362,12 +2472,11 @@ body.nav-open::before {
 
   .service-detail-grid {
     grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.5fr);
-    gap: 5rem;
+    gap: clamp(2rem, 4vw, 5rem);
   }
 
   .service-detail-aside {
-    position: sticky;
-    top: calc(var(--header-height) + 2rem);
+    position: static;
   }
 
   .timeline {
@@ -2397,8 +2506,10 @@ body.nav-open::before {
 
   .value-card {
     min-height: 17rem;
-    padding: 2rem;
+    padding: 1.5rem;
   }
+
+  .value-card h3 { font-size: clamp(1.45rem, 2vw, 2rem); }
 
   .contact-layout {
     grid-template-columns: minmax(0, 1.35fr) minmax(19rem, 0.65fr);
@@ -2406,8 +2517,7 @@ body.nav-open::before {
   }
 
   .direct-contact-card {
-    position: sticky;
-    top: calc(var(--header-height) + 2rem);
+    position: static;
   }
 
   .legal-layout {
@@ -2420,6 +2530,9 @@ body.nav-open::before {
     top: calc(var(--header-height) + 2rem);
     display: block;
     align-self: start;
+    max-height: calc(100dvh - var(--header-height) - 3rem);
+    overflow-y: auto;
+    border-bottom: 0;
   }
 
   .legal-nav a {
@@ -2433,6 +2546,15 @@ body.nav-open::before {
   .legal-nav a:hover {
     color: var(--forest);
   }
+
+  .footer-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.65fr) minmax(0, 0.9fr) minmax(0, 1.2fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 75rem) {
+  .service-listing { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 /* Keep the monochrome tree mark visible on the dark footer background. */

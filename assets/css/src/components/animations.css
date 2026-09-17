@@ -16,6 +16,11 @@
   transform: translateY(0);
 }
 
+.js [data-reveal]:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -25,7 +30,7 @@
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0s !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
@@ -35,4 +40,3 @@
     transform: none;
   }
 }
-

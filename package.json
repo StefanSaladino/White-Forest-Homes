@@ -6,7 +6,14 @@
   "scripts": {
     "serve": "python3 -m http.server 8080",
     "validate": "node scripts/validate-site.mjs",
-    "check:js": "node --check assets/js/boot.v1.js && node --check assets/js/tracking-config.v1.js && node --check assets/js/consent.v1.js && node --check assets/js/script.v1.js",
-    "check:todos": "node scripts/list-prod-todos.mjs"
+    "check:js": "node --check assets/js/tracking-config.v2.js && node --check assets/js/consent.v2.js && node --check assets/js/script.v2.js",
+    "check:todos": "node scripts/list-prod-todos.mjs",
+    "build:css": "node scripts/build-css.mjs",
+    "check:css": "node scripts/build-css.mjs --check",
+    "test:browser": "node scripts/audit-browser.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.13.0",
+    "playwright": "1.63.0"
   }
 }
