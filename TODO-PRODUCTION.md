@@ -35,7 +35,7 @@ Every code-level production dependency is also marked with `TODO(PROD)` in the r
 
 ## 4. Google Analytics and Google Ads
 
-Edit `assets/js/tracking-config.v1.js`:
+Edit `assets/js/tracking-config.v2.js`:
 
 - [ ] Replace `G-XXXXXXXXXX` with the production GA4 Measurement ID.
 - [ ] Replace `AW-XXXXXXXXXX` with the Google Ads ID.

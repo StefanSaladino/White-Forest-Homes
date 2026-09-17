@@ -24,6 +24,10 @@
   const openButtons = document.querySelectorAll("[data-open-cookie-settings]");
 
   let googleTagLoadingPromise = null;
+  let activeConsent = readConsent();
+  let analyticsConfigured = false;
+  let advertisingConfigured = false;
+  let dialogOpener = null;
 
   /** Create the Google command queue before any tag is loaded. */
   window.dataLayer = window.dataLayer || [];
@@ -49,14 +53,15 @@
   function isConfiguredId(value, prefix) {
     return typeof value === "string"
       && value.startsWith(prefix)
-      && !value.includes("X");
+      && !/^G-X+$|^AW-X/.test(value)
+      && (prefix === "G-" ? /^G-[A-Z0-9]+$/.test(value) : /^AW-\d+(?:\/[\w-]+)?$/.test(value));
   }
 
   function normalizeConsent(value) {
     return {
       version: consentVersion,
-      analytics: Boolean(value?.analytics),
-      advertising: Boolean(value?.advertising),
+      analytics: value?.analytics === true,
+      advertising: value?.advertising === true,
       updatedAt: typeof value?.updatedAt === "string"
         ? value.updatedAt
         : new Date().toISOString(),
@@ -102,12 +107,12 @@
     });
   }
 
-  function primaryGoogleId() {
-    if (isConfiguredId(config.ga4MeasurementId, "G-")) {
+  function primaryGoogleId(consent) {
+    if (consent.analytics && isConfiguredId(config.ga4MeasurementId, "G-")) {
       return config.ga4MeasurementId;
     }
 
-    if (isConfiguredId(config.googleAdsId, "AW-")) {
+    if (consent.advertising && isConfiguredId(config.googleAdsId, "AW-")) {
       return config.googleAdsId;
     }
 
@@ -116,7 +121,7 @@
 
   /** Load and configure Google's shared tag only after consent. */
   function loadGoogleTag(consent) {
-    const primaryId = primaryGoogleId();
+    const primaryId = primaryGoogleId(consent);
     if (!primaryId || (!consent.analytics && !consent.advertising)) {
       return Promise.resolve(false);
     }
@@ -130,16 +135,6 @@
       script.onload = () => {
         window.gtag("js", new Date());
 
-        if (isConfiguredId(config.ga4MeasurementId, "G-")) {
-          window.gtag("config", config.ga4MeasurementId, {
-            send_page_view: consent.analytics,
-          });
-        }
-
-        if (isConfiguredId(config.googleAdsId, "AW-") && consent.advertising) {
-          window.gtag("config", config.googleAdsId);
-        }
-
         resolve(true);
       };
       script.onerror = () => reject(new Error("Google tag failed to load."));
@@ -151,6 +146,20 @@
     });
 
     return googleTagLoadingPromise;
+  }
+
+  async function configureGrantedTags() {
+    if (!activeConsent || !await loadGoogleTag(activeConsent)) return false;
+    // Re-read the current choice after the download, including a mid-load rejection.
+    if (activeConsent.analytics && !analyticsConfigured && isConfiguredId(config.ga4MeasurementId, "G-")) {
+      window.gtag("config", config.ga4MeasurementId);
+      analyticsConfigured = true;
+    }
+    if (activeConsent.advertising && !advertisingConfigured && isConfiguredId(config.googleAdsId, "AW-")) {
+      window.gtag("config", config.googleAdsId);
+      advertisingConfigured = true;
+    }
+    return true;
   }
 
   function syncControls(consent) {
@@ -169,8 +178,10 @@
   function openDialog() {
     if (!dialog) return;
 
-    syncControls(readConsent() || { analytics: false, advertising: false });
+    dialogOpener = document.activeElement;
+    syncControls(activeConsent || { analytics: false, advertising: false });
     document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open");
 
     if (typeof dialog.showModal === "function") {
       dialog.showModal();
@@ -183,6 +194,7 @@
     if (!dialog) return;
 
     document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
 
     if (typeof dialog.close === "function") {
       dialog.close();
@@ -195,6 +207,7 @@
     const consent = options.persist === false
       ? normalizeConsent(value)
       : saveConsent(value);
+    activeConsent = consent;
 
     syncControls(consent);
     updateGoogleConsent(consent);
@@ -202,11 +215,11 @@
     closeDialog();
 
     if (consent.analytics || consent.advertising) {
-      await loadGoogleTag(consent);
+      await configureGrantedTags();
     }
 
     document.dispatchEvent(new CustomEvent("wfh:consent-updated", {
-      detail: consent,
+      detail: activeConsent,
     }));
 
     return consent;
@@ -214,22 +227,22 @@
 
   /** Public measurement helpers used by the thank-you page and future forms. */
   window.WFHAnalytics = Object.freeze({
-    getConsent: () => readConsent(),
+    getConsent: () => activeConsent ? { ...activeConsent } : null,
 
     async trackEvent(name, parameters = {}) {
-      const consent = readConsent();
+      const consent = activeConsent;
       if (!consent?.analytics) return false;
 
-      await loadGoogleTag(consent);
+      if (!isConfiguredId(config.ga4MeasurementId, "G-") || !await configureGrantedTags() || !activeConsent?.analytics) return false;
       window.gtag("event", name, parameters);
       return true;
     },
 
     async trackAdsConversion(sendTo, parameters = {}) {
-      const consent = readConsent();
+      const consent = activeConsent;
       if (!consent?.advertising || !isConfiguredId(sendTo, "AW-")) return false;
 
-      await loadGoogleTag(consent);
+      if (!await configureGrantedTags() || !activeConsent?.advertising) return false;
       window.gtag("event", "conversion", {
         send_to: sendTo,
         ...parameters,
@@ -274,6 +287,10 @@
 
   dialog?.addEventListener("close", () => {
     document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open");
+    const focusTarget = dialogOpener?.checkVisibility() ? dialogOpener : document.getElementById("main-content");
+    focusTarget?.focus({ preventScroll: true });
+    dialogOpener = null;
   });
 
   dialog?.addEventListener("click", (event) => {
@@ -281,7 +298,7 @@
   });
 
   /** Initialize from a saved choice or surface the banner. */
-  const savedConsent = readConsent();
+  const savedConsent = activeConsent;
   if (savedConsent) {
     applyConsent(savedConsent, { persist: false });
   } else {

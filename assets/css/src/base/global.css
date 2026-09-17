@@ -111,6 +111,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  min-height: 2.75rem;
   color: var(--forest);
   font-size: 0.78rem;
   font-weight: 700;
@@ -122,6 +123,7 @@
 .text-link svg {
   width: 1rem;
   height: 1rem;
+  flex-shrink: 0;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -172,6 +174,18 @@
   color: var(--forest);
 }
 
+.button--light:hover {
+  background: var(--paper-2);
+  color: var(--forest);
+}
+
+.section--forest .eyebrow,
+.service-detail-aside .eyebrow,
+.site-cta .eyebrow,
+.page-hero--dark .eyebrow {
+  color: #cbd6cb;
+}
+
 .button--outline {
   border-color: var(--line);
   background: transparent;
@@ -205,4 +219,3 @@
   stroke-linejoin: round;
   stroke-width: 1.55;
 }
-

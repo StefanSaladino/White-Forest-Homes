@@ -6,8 +6,9 @@
  */
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = resolve(new URL("../", import.meta.url).pathname);
+const root = fileURLToPath(new URL("../", import.meta.url));
 // HTML pages load the modular files directly; this output is retained for compatibility checks.
 const outputPath = resolve(root, "assets/css/styles.v1.css");
 const sourceFiles = [

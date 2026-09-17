@@ -1,9 +1,10 @@
 /** List every production TODO with its source file and line number. */
 import { readdir, readFile, stat } from "node:fs/promises";
 import { join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const root = new URL("../", import.meta.url);
-const ignored = new Set(["node_modules", ".git"]);
+const ignored = new Set(["node_modules", ".git", ".audit-results"]);
 
 async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -19,7 +20,7 @@ async function walk(directory) {
   return files;
 }
 
-const rootPath = root.pathname;
+const rootPath = fileURLToPath(root);
 const files = await walk(rootPath);
 let count = 0;
 
