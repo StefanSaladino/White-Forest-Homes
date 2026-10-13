@@ -28,6 +28,7 @@ const sourceFiles = [
   "assets/css/src/components/animations.css",
   "assets/css/src/responsive/tablet.css",
   "assets/css/src/responsive/desktop.css",
+  "assets/css/src/pages/real-work.css",
 ];
 
 const bundle = (

@@ -11,3 +11,5 @@ Review the homepage, 14-photo work gallery and filters, renovation and custom-ho
 Changes: Collingwood replaces Muskoka/Huntsville; display name is White Forest Homes & Renovations; renovations and additions lead the site; custom homes remain available. Only the supplied work photos are included. Duplicate bedroom photo omitted from display. No project names, locations, dates or testimonials were invented.
 
 Before production: confirm display name and exact service area; confirm the canonical domain; configure hosting/form notifications; insert the actual Google Analytics and Ads IDs and test conversions. Existing business phone, email and Instagram are retained. No GitHub push or deployment has been made.
+
+Photo cleanup: all photography now lives directly in assets/images with descriptive filenames. Replace the old assets/images folder when applying this package. See UPDATE-NOTES.md.

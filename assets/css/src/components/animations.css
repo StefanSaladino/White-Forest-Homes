@@ -5,10 +5,10 @@
 
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(1.5rem);
+  transform: translateY(.75rem);
   transition:
-    opacity 650ms var(--ease),
-    transform 650ms var(--ease);
+    opacity 550ms var(--ease),
+    transform 550ms var(--ease);
 }
 
 .js [data-reveal].is-visible {
@@ -39,4 +39,25 @@
     opacity: 1;
     transform: none;
   }
+}
+
+/* Brief entrance and restrained link feedback; no looping movement. */
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero-copy > .eyebrow,
+  .page-hero-copy > h1,
+  .page-hero-copy > p,
+  .page-hero-copy > .button-row {
+    animation: hero-settle 550ms var(--ease) both;
+  }
+  .page-hero-copy > h1 { animation-delay: 60ms; }
+  .page-hero-copy > p { animation-delay: 110ms; }
+  .page-hero-copy > .button-row { animation-delay: 160ms; }
+  @keyframes hero-settle {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .service-rows > a > span:last-child { transition: transform 250ms var(--ease); }
+  .service-rows > a:hover > span:last-child { transform: translate(3px, -3px); }
 }

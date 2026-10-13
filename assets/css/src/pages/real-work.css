@@ -1,2 +1,22 @@
 /* Real work portfolio and renovation-first presentation. */
 .page-hero-copy .button-row{margin-top:1.8rem}.page-hero-copy h1{max-width:18ch}.page-hero-media img{object-position:center}.brand-wordmark small{letter-spacing:.1em;font-size:.57rem}.work-gallery{display:grid;gap:2.5rem 1.5rem;align-items:start}.work-gallery figure{margin:0;min-width:0}.work-gallery picture{display:block;background:var(--paper-2)}.work-gallery img{width:100%;height:auto;display:block}.work-gallery figcaption{padding-top:.8rem;font-size:.9rem;color:var(--ink-soft)}.work-gallery figcaption a{display:block;margin-top:.4rem;font-size:.75rem;text-decoration:underline;text-underline-offset:.2em}.work-gallery [hidden]{display:none}.reading-width{max-width:54rem}.service-rows>a{display:flex;align-items:baseline;gap:1.25rem;padding:2rem 0;border-bottom:1px solid var(--line);text-decoration:none}.service-rows>a>div{flex:1}.service-rows h2{font-size:clamp(1.6rem,4vw,2.7rem);margin-bottom:.5rem}.service-rows p{margin:0;color:var(--ink-soft)}details{padding:1rem 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:650}details p{margin-top:1rem}a,button{touch-action:manipulation}@media(min-width:42rem){.work-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.work-gallery picture{height:30rem}.work-gallery img{height:100%;object-fit:contain}}@media(min-width:64rem){.brand-wordmark small{font-size:.65rem}.page-hero-media{min-height:38rem}.page-hero-media img{object-fit:contain;background:var(--paper-2)}.page-hero-copy{padding-block:5rem}.work-gallery picture{height:36rem}}
+
+/* Expandable portfolio photographs and an accessible full-size viewer. */
+.expandable-photo { display:block; cursor:zoom-in; }
+.expandable-photo picture { overflow:hidden; }
+.expandable-photo img { transition:transform 420ms var(--ease), filter 420ms var(--ease); }
+.expandable-photo:focus-visible { outline:3px solid var(--forest); outline-offset:5px; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .expandable-photo:hover img { transform:scale(1.025); filter:grayscale(.08); }
+}
+.photo-viewer { width:min(96vw,90rem); max-width:96vw; max-height:94dvh; padding:0; border:0; background:#f6f3ec; color:var(--ink); }
+.photo-viewer::backdrop { background:rgba(7,18,12,.87); }
+.photo-viewer-inner { padding:1rem; }
+.photo-viewer-toolbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.8rem; }
+.photo-viewer-toolbar h2 { margin:0; font-family:var(--sans); font-size:.9rem; line-height:1.4; }
+.photo-viewer-close { display:grid; place-items:center; width:2.75rem; height:2.75rem; flex:0 0 auto; border:1px solid var(--line); background:var(--white); color:var(--forest); cursor:pointer; }
+.photo-viewer-image { display:block; width:100%; height:auto; max-height:calc(94dvh - 6.5rem); object-fit:contain; }
+@media (prefers-reduced-motion:no-preference) {
+  .photo-viewer[open] { animation:viewer-appear 180ms ease-out; }
+  @keyframes viewer-appear { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+}

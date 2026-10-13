@@ -26,6 +26,7 @@
     const shouldOpen = open && !desktopNavigationQuery.matches;
 
     body.classList.toggle("nav-open", shouldOpen);
+    header?.classList.toggle("menu-active", shouldOpen);
     document.documentElement.classList.toggle("nav-open", shouldOpen);
     backgroundRegions.forEach((region) => { region.inert = shouldOpen; });
     if (nav) nav.inert = !shouldOpen && !desktopNavigationQuery.matches;
@@ -252,5 +253,39 @@
 
     /** Handle visitors who already had a saved consent choice. */
     window.setTimeout(trackLeadOnce, 650);
+  }
+  // Full-photo links keep their native destination when JS/dialogs are unavailable.
+  const photoViewer = document.querySelector("[data-photo-viewer]");
+  if (photoViewer && typeof photoViewer.showModal === "function") {
+    const enlargedImage = photoViewer.querySelector("[data-photo-image]");
+    const photoTitle = photoViewer.querySelector("#photo-viewer-title");
+    let photoTrigger = null;
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a[data-photo-expand]");
+      if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      photoTrigger = link;
+      const original = link.closest("figure")?.querySelector("img");
+      enlargedImage.src = link.href;
+      enlargedImage.alt = original?.alt || "White Forest work photograph";
+      if (original) {
+        enlargedImage.width = original.width;
+        enlargedImage.height = original.height;
+      }
+      photoTitle.textContent = original?.alt || "White Forest work photograph";
+      document.documentElement.classList.add("modal-open");
+      document.body.classList.add("modal-open");
+      photoViewer.showModal();
+      photoViewer.querySelector("[data-photo-close]").focus();
+    });
+    photoViewer.querySelector("[data-photo-close]").addEventListener("click", () => photoViewer.close());
+    photoViewer.addEventListener("click", (event) => {
+      if (event.target === photoViewer) photoViewer.close();
+    });
+    photoViewer.addEventListener("close", () => {
+      document.documentElement.classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
+      photoTrigger?.focus({ preventScroll: true });
+    });
   }
 })();

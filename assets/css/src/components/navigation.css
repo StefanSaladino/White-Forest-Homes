@@ -265,3 +265,61 @@ body.nav-open::before {
   display: none;
 }
 
+
+/* Solid full-screen mobile menu; fade only the links, never the surface. */
+@media (max-width: 63.999rem) {
+  body.nav-open::before { display: none; }
+  .site-header.menu-active {
+    position: fixed;
+    inset: 0 0 auto;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    background: #f6f3ec;
+    background-image: none;
+    opacity: 1;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid var(--line);
+    box-shadow: none;
+  }
+  .site-nav {
+    width: 100%;
+    max-width: none;
+    background: #f6f3ec;
+    opacity: 1;
+    box-shadow: none;
+    scrollbar-gutter: auto;
+    transition: transform 440ms var(--ease), visibility 440ms;
+  }
+  .site-header.menu-active .header-inner {
+    background: #f6f3ec;
+  }
+  .site-header.menu-active .site-nav {
+    inset: var(--header-height) 0 0;
+    width: 100%;
+    height: calc(100dvh - var(--header-height));
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: #f6f3ec;
+  }
+}
+
+/* Contact links retain the site's understated line-icon language. */
+.site-nav-meta a {
+  justify-content: flex-start;
+  gap: .85rem;
+}
+.site-nav-meta .nav-contact-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 1.2rem;
+  color: var(--forest);
+}
+.site-nav-meta a span { min-width: 0; overflow-wrap: anywhere; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site-nav-meta .nav-contact-icon { transition: transform 220ms var(--ease); }
+  .site-nav-meta a:hover .nav-contact-icon { transform: translateY(-2px); }
+}

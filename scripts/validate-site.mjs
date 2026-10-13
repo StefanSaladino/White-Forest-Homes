@@ -19,7 +19,7 @@ const expectedStylesheets = [
   "assets/css/src/tokens.css?v=3",
   "assets/css/src/base/foundations.css?v=3",
   "assets/css/src/base/global.css?v=3",
-  "assets/css/src/components/navigation.css?v=3",
+  "assets/css/src/components/navigation.css?v=6",
   "assets/css/src/components/heroes.css?v=3",
   "assets/css/src/pages/home.css?v=3",
   "assets/css/src/pages/projects.css?v=3",
@@ -29,10 +29,10 @@ const expectedStylesheets = [
   "assets/css/src/components/cta-footer.css?v=3",
   "assets/css/src/components/consent.css?v=3",
   "assets/css/src/pages/utility-pages.css?v=3",
-  "assets/css/src/components/animations.css?v=3",
+  "assets/css/src/components/animations.css?v=4",
   "assets/css/src/responsive/tablet.css?v=3",
   "assets/css/src/responsive/desktop.css?v=3",
-  "assets/css/src/pages/real-work.css?v=1",
+  "assets/css/src/pages/real-work.css?v=2",
 ];
 
 function matches(text, expression) {

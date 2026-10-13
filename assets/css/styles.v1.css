@@ -641,6 +641,64 @@ body.nav-open::before {
   display: none;
 }
 
+
+/* Solid full-screen mobile menu; fade only the links, never the surface. */
+@media (max-width: 63.999rem) {
+  body.nav-open::before { display: none; }
+  .site-header.menu-active {
+    position: fixed;
+    inset: 0 0 auto;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    background: #f6f3ec;
+    background-image: none;
+    opacity: 1;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid var(--line);
+    box-shadow: none;
+  }
+  .site-nav {
+    width: 100%;
+    max-width: none;
+    background: #f6f3ec;
+    opacity: 1;
+    box-shadow: none;
+    scrollbar-gutter: auto;
+    transition: transform 440ms var(--ease), visibility 440ms;
+  }
+  .site-header.menu-active .header-inner {
+    background: #f6f3ec;
+  }
+  .site-header.menu-active .site-nav {
+    inset: var(--header-height) 0 0;
+    width: 100%;
+    height: calc(100dvh - var(--header-height));
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    background: #f6f3ec;
+  }
+}
+
+/* Contact links retain the site's understated line-icon language. */
+.site-nav-meta a {
+  justify-content: flex-start;
+  gap: .85rem;
+}
+.site-nav-meta .nav-contact-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 1.2rem;
+  color: var(--forest);
+}
+.site-nav-meta a span { min-width: 0; overflow-wrap: anywhere; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .site-nav-meta .nav-contact-icon { transition: transform 220ms var(--ease); }
+  .site-nav-meta a:hover .nav-contact-icon { transform: translateY(-2px); }
+}
 /* =========================================================
    HERO SECTIONS
    ========================================================= */
@@ -2152,10 +2210,10 @@ html:not(.js) .filter-bar { display: none; }
 
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(1.5rem);
+  transform: translateY(.75rem);
   transition:
-    opacity 650ms var(--ease),
-    transform 650ms var(--ease);
+    opacity 550ms var(--ease),
+    transform 550ms var(--ease);
 }
 
 .js [data-reveal].is-visible {
@@ -2186,6 +2244,27 @@ html:not(.js) .filter-bar { display: none; }
     opacity: 1;
     transform: none;
   }
+}
+
+/* Brief entrance and restrained link feedback; no looping movement. */
+@media (prefers-reduced-motion: no-preference) {
+  .page-hero-copy > .eyebrow,
+  .page-hero-copy > h1,
+  .page-hero-copy > p,
+  .page-hero-copy > .button-row {
+    animation: hero-settle 550ms var(--ease) both;
+  }
+  .page-hero-copy > h1 { animation-delay: 60ms; }
+  .page-hero-copy > p { animation-delay: 110ms; }
+  .page-hero-copy > .button-row { animation-delay: 160ms; }
+  @keyframes hero-settle {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .service-rows > a > span:last-child { transition: transform 250ms var(--ease); }
+  .service-rows > a:hover > span:last-child { transform: translate(3px, -3px); }
 }
 /* =========================================================
    TABLET
@@ -2603,4 +2682,26 @@ html:not(.js) .filter-bar { display: none; }
 
 .project-card-content {
   z-index: 2;
+}
+/* Real work portfolio and renovation-first presentation. */
+.page-hero-copy .button-row{margin-top:1.8rem}.page-hero-copy h1{max-width:18ch}.page-hero-media img{object-position:center}.brand-wordmark small{letter-spacing:.1em;font-size:.57rem}.work-gallery{display:grid;gap:2.5rem 1.5rem;align-items:start}.work-gallery figure{margin:0;min-width:0}.work-gallery picture{display:block;background:var(--paper-2)}.work-gallery img{width:100%;height:auto;display:block}.work-gallery figcaption{padding-top:.8rem;font-size:.9rem;color:var(--ink-soft)}.work-gallery figcaption a{display:block;margin-top:.4rem;font-size:.75rem;text-decoration:underline;text-underline-offset:.2em}.work-gallery [hidden]{display:none}.reading-width{max-width:54rem}.service-rows>a{display:flex;align-items:baseline;gap:1.25rem;padding:2rem 0;border-bottom:1px solid var(--line);text-decoration:none}.service-rows>a>div{flex:1}.service-rows h2{font-size:clamp(1.6rem,4vw,2.7rem);margin-bottom:.5rem}.service-rows p{margin:0;color:var(--ink-soft)}details{padding:1rem 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:650}details p{margin-top:1rem}a,button{touch-action:manipulation}@media(min-width:42rem){.work-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.work-gallery picture{height:30rem}.work-gallery img{height:100%;object-fit:contain}}@media(min-width:64rem){.brand-wordmark small{font-size:.65rem}.page-hero-media{min-height:38rem}.page-hero-media img{object-fit:contain;background:var(--paper-2)}.page-hero-copy{padding-block:5rem}.work-gallery picture{height:36rem}}
+
+/* Expandable portfolio photographs and an accessible full-size viewer. */
+.expandable-photo { display:block; cursor:zoom-in; }
+.expandable-photo picture { overflow:hidden; }
+.expandable-photo img { transition:transform 420ms var(--ease), filter 420ms var(--ease); }
+.expandable-photo:focus-visible { outline:3px solid var(--forest); outline-offset:5px; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .expandable-photo:hover img { transform:scale(1.025); filter:grayscale(.08); }
+}
+.photo-viewer { width:min(96vw,90rem); max-width:96vw; max-height:94dvh; padding:0; border:0; background:#f6f3ec; color:var(--ink); }
+.photo-viewer::backdrop { background:rgba(7,18,12,.87); }
+.photo-viewer-inner { padding:1rem; }
+.photo-viewer-toolbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.8rem; }
+.photo-viewer-toolbar h2 { margin:0; font-family:var(--sans); font-size:.9rem; line-height:1.4; }
+.photo-viewer-close { display:grid; place-items:center; width:2.75rem; height:2.75rem; flex:0 0 auto; border:1px solid var(--line); background:var(--white); color:var(--forest); cursor:pointer; }
+.photo-viewer-image { display:block; width:100%; height:auto; max-height:calc(94dvh - 6.5rem); object-fit:contain; }
+@media (prefers-reduced-motion:no-preference) {
+  .photo-viewer[open] { animation:viewer-appear 180ms ease-out; }
+  @keyframes viewer-appear { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 }
