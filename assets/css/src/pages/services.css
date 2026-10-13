@@ -99,6 +99,10 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.service-detail-aside h2 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+}
+
 .service-detail-aside ul {
   display: grid;
   gap: 0.8rem;
@@ -159,4 +163,3 @@
   padding-bottom: 1.25rem;
   color: var(--ink-soft);
 }
-

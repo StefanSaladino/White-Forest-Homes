@@ -1,0 +1,34 @@
+/* Navigation remains available if JavaScript is disabled. */
+@media (max-width: 63.999rem) {
+  html .site-header {
+    position: relative;
+    height: auto;
+  }
+
+  html .header-inner {
+    flex-wrap: wrap;
+    padding-block: 1rem;
+  }
+
+  html .nav-toggle { display: none; }
+
+  html .site-nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  html .site-nav-list li,
+  html .site-nav-meta > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.filter-bar { display: none; }

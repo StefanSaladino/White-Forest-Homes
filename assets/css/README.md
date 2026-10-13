@@ -24,22 +24,22 @@ Every HTML page loads the role-based files under `assets/css/src/` directly. The
 ## Required HTML order
 
 ```html
-<link rel="stylesheet" href="assets/css/src/tokens.css?v=1">
-<link rel="stylesheet" href="assets/css/src/base/foundations.css?v=1">
-<link rel="stylesheet" href="assets/css/src/base/global.css?v=1">
-<link rel="stylesheet" href="assets/css/src/components/navigation.css?v=1">
-<link rel="stylesheet" href="assets/css/src/components/heroes.css?v=1">
-<link rel="stylesheet" href="assets/css/src/pages/home.css?v=1">
-<link rel="stylesheet" href="assets/css/src/pages/projects.css?v=1">
-<link rel="stylesheet" href="assets/css/src/pages/services.css?v=1">
-<link rel="stylesheet" href="assets/css/src/pages/process-about.css?v=1">
-<link rel="stylesheet" href="assets/css/src/pages/contact.css?v=1">
-<link rel="stylesheet" href="assets/css/src/components/cta-footer.css?v=1">
-<link rel="stylesheet" href="assets/css/src/components/consent.css?v=1">
-<link rel="stylesheet" href="assets/css/src/pages/utility-pages.css?v=1">
-<link rel="stylesheet" href="assets/css/src/components/animations.css?v=1">
-<link rel="stylesheet" href="assets/css/src/responsive/tablet.css?v=1">
-<link rel="stylesheet" href="assets/css/src/responsive/desktop.css?v=1">
+<link rel="stylesheet" href="assets/css/src/tokens.css?v=2">
+<link rel="stylesheet" href="assets/css/src/base/foundations.css?v=2">
+<link rel="stylesheet" href="assets/css/src/base/global.css?v=2">
+<link rel="stylesheet" href="assets/css/src/components/navigation.css?v=2">
+<link rel="stylesheet" href="assets/css/src/components/heroes.css?v=2">
+<link rel="stylesheet" href="assets/css/src/pages/home.css?v=2">
+<link rel="stylesheet" href="assets/css/src/pages/projects.css?v=2">
+<link rel="stylesheet" href="assets/css/src/pages/services.css?v=2">
+<link rel="stylesheet" href="assets/css/src/pages/process-about.css?v=2">
+<link rel="stylesheet" href="assets/css/src/pages/contact.css?v=2">
+<link rel="stylesheet" href="assets/css/src/components/cta-footer.css?v=2">
+<link rel="stylesheet" href="assets/css/src/components/consent.css?v=2">
+<link rel="stylesheet" href="assets/css/src/pages/utility-pages.css?v=2">
+<link rel="stylesheet" href="assets/css/src/components/animations.css?v=2">
+<link rel="stylesheet" href="assets/css/src/responsive/tablet.css?v=2">
+<link rel="stylesheet" href="assets/css/src/responsive/desktop.css?v=2">
 ```
 
 All pages currently load the full ordered list to guarantee that the rendered cascade remains identical to the previous bundle. Browser caching prevents repeat downloads as visitors move between pages.

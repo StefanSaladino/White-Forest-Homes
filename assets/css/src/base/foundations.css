@@ -10,24 +10,35 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-block-start: calc(var(--header-height) + 1rem);
   text-size-adjust: 100%;
   scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
-  min-width: 20rem;
+  min-width: 0;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   font-size: 1rem;
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
+html.nav-open,
+html.modal-open,
 body.nav-open,
 body.modal-open {
   overflow: hidden;
+}
+
+main,
+section,
+article,
+aside,
+.container > * {
+  min-width: 0;
 }
 
 img,
@@ -102,7 +113,7 @@ p:last-child {
 }
 
 :focus-visible {
-  outline: 3px solid #b98a4a;
+  outline: 3px solid currentColor;
   outline-offset: 4px;
 }
 
@@ -114,4 +125,3 @@ p:last-child {
 [hidden] {
   display: none !important;
 }
-
