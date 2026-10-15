@@ -5,3 +5,5 @@
 
 # Netlify fallback for unknown static routes.
 /*  /404.html  404
+
+/outdoor-living.html /renovations-additions.html 301

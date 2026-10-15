@@ -1,0 +1,3 @@
+Extract this ZIP, then copy the contents of White-Forest-Homes into your existing repository. Overwrite matching files. Remove outdoor-living.html and any old white-forest-social-card.jpg/.svg files if still present. Do not copy or overwrite .git.
+
+Run npm run validate, npm run check:js and npm run check:css. Open index.html locally and review the church-kitchen.html and custom-home-case-study.html pages. No GitHub push was made by the assistant.

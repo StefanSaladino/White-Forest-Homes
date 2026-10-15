@@ -97,7 +97,7 @@ async function runInteractions(browser, base) {
  await page.locator('.project-card h3 a').first().click();
  assert(page.url().endsWith('projects.html#lakeside-custom-home'));
  await assertAnchor('lakeside-custom-home');
- for(const [category,count] of [['custom-homes',2],['renovations',3],['interiors',3],['outdoor',1],['all',6]]){
+ for(const [category,count] of [['custom-homes',2],['renovations',3],['interiors',3],['all',6]]){
   await page.locator(`[data-project-filter="${category}"]`).click();
   assert.equal(await page.locator('[data-project-category]:visible').count(),count);
   assert.equal(await page.locator(`[data-project-filter="${category}"]`).getAttribute('aria-pressed'),'true');

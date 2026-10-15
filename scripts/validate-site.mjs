@@ -32,7 +32,7 @@ const expectedStylesheets = [
   "assets/css/src/components/animations.css?v=4",
   "assets/css/src/responsive/tablet.css?v=3",
   "assets/css/src/responsive/desktop.css?v=3",
-  "assets/css/src/pages/real-work.css?v=2",
+  "assets/css/src/pages/real-work.css?v=4",
 ];
 
 function matches(text, expression) {

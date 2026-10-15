@@ -15,3 +15,9 @@ Menu correction: fixed opaque header, full-width opaque menu, surface opacity an
 Polish: phone, email and Instagram line icons in every mobile menu; brief hero-copy entrance; small scroll reveals on selected section headings and copy; subtle service-arrow and contact-icon hover motion. All added movement respects reduced-motion preferences.
 
 Photo viewer: every gallery photograph and its full-photo text link opens an on-page dialog, with keyboard Escape, close button and returned focus. Hover adds 2.5% zoom and 8% grayscale on devices supporting hover; reduced-motion users see no effect. Native image links remain available without JavaScript.
+
+Service update: removed the discontinued exterior service from pages, navigation, inquiry choices and structured data. Removed its standalone page and sitemap entry; retained a hosting redirect to renovations. Sharing cards now use the real black kitchen photograph, with a new filename to refresh social previews.
+
+Case studies: homepage now leads with the church kitchen. Two dedicated project pages provide the confirmed setting and photo-led details, linked from homepage, portfolio and relevant service pages. Black kitchen photos are assigned to the church kitchen; remaining supplied photos are assigned to the custom home as instructed. No project addresses, dates, budgets or construction-history details have been invented. All previous changes are included.
+
+Scope clarification: only the kitchen is attributed to White Forest on the church case study. The church setting does not imply White Forest rebuilt the building.

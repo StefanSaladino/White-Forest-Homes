@@ -1,11 +1,13 @@
 # White Forest Homes & Renovations
 
-Residential renovations and additions serving Collingwood, Ontario and surrounding communities. Custom homes, kitchens and interiors, and decks/outdoor improvements remain available.
+Residential renovations and additions serving Collingwood, Ontario and surrounding communities. Custom homes, kitchens and interiors remain available.
 
 Work photography: only the supplied White Forest work images. Project addresses and dates are not published.
 
-Pages: index.html, renovations-additions.html, custom-homes.html, kitchens-interiors.html, outdoor-living.html, projects.html, services.html, about.html, process.html, contact.html, privacy.html.
+Pages: index.html, renovations-additions.html, custom-homes.html, kitchens-interiors.html, projects.html, services.html, about.html, process.html, contact.html, privacy.html.
 
 Phone: +1-705-970-6325
 Email: Whiteforesthomes@hotmail.com
 Instagram: https://www.instagram.com/the_white_forests/
+
+Featured work: a kitchen completed by White Forest inside a rebuilt church (church-kitchen.html), and a custom home completed by White Forest (custom-home-case-study.html). Project locations, budgets and completion dates are not specified.
