@@ -21,3 +21,5 @@ Service update: removed the discontinued exterior service from pages, navigation
 Case studies: homepage now leads with the church kitchen. Two dedicated project pages provide the confirmed setting and photo-led details, linked from homepage, portfolio and relevant service pages. Black kitchen photos are assigned to the church kitchen; remaining supplied photos are assigned to the custom home as instructed. No project addresses, dates, budgets or construction-history details have been invented. All previous changes are included.
 
 Scope clarification: only the kitchen is attributed to White Forest on the church case study. The church setting does not imply White Forest rebuilt the building.
+
+Homepage correction: restored company and service introduction, Collingwood service-area H1, company-led title/description, service-first content and enquiry CTA. Detailed case studies remain on Projects and their dedicated project pages. Added missing business structured-data node using existing contact/service facts, without inventing an address.
