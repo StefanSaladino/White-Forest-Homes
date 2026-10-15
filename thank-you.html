@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="assets/css/src/pages/process-about.css?v=3">
   <link rel="stylesheet" href="assets/css/src/pages/contact.css?v=3">
   <link rel="stylesheet" href="assets/css/src/components/cta-footer.css?v=3">
-  <link rel="stylesheet" href="assets/css/src/components/consent.css?v=3">
+  <link rel="stylesheet" href="assets/css/src/components/consent.css?v=4">
   <link rel="stylesheet" href="assets/css/src/pages/utility-pages.css?v=3">
   <link rel="stylesheet" href="assets/css/src/components/animations.css?v=4">
   <link rel="stylesheet" href="assets/css/src/responsive/tablet.css?v=3">
@@ -48,7 +48,7 @@
   <!-- TODO(PROD): Verify every business fact and structured-data property before launch. -->
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.whiteforesthomes.com/#website","url":"https://www.whiteforesthomes.com/","name":"White Forest Homes & Renovations","publisher":{"@id":"https://www.whiteforesthomes.com/#business"},"inLanguage":"en-CA"},{"@type":"WebPage","@id":"https://www.whiteforesthomes.com/thank-you.html#webpage","url":"https://www.whiteforesthomes.com/thank-you.html","name":"Thank You | White Forest Homes & Renovations","description":"Thank you for contacting White Forest Homes & Renovations.","isPartOf":{"@id":"https://www.whiteforesthomes.com/#website"},"about":{"@id":"https://www.whiteforesthomes.com/#business"},"inLanguage":"en-CA"}]}</script>
   <script defer src="assets/js/tracking-config.v2.js"></script>
-  <script defer src="assets/js/consent.v2.js"></script>
+  <script defer src="assets/js/consent.v2.js?v=3"></script>
   <script defer src="assets/js/script.v2.js?v=4"></script>
   <link rel="stylesheet" href="assets/css/src/pages/real-work.css?v=5">
 </head>
@@ -137,15 +137,15 @@
     </div>
     <div class="consent-option">
       <div><strong>Necessary</strong><p>Required for security, accessibility and remembering your cookie preference. Always active.</p></div>
-      <label class="switch switch--locked" aria-label="Necessary storage is always active"><input type="checkbox" aria-label="Necessary storage (always active)" checked disabled><span class="switch-track"></span></label>
+      <span class="consent-required" aria-label="Necessary storage is always active">Always on</span>
     </div>
     <div class="consent-option">
-      <div><strong>Analytics</strong><p>Allows Google Analytics to help us understand site visits and improve content.</p></div>
-      <label class="switch"><input type="checkbox" aria-label="Allow analytics cookies" data-consent-analytics><span class="switch-track"></span></label>
+      <div><strong><label for="consent-analytics">Analytics</label></strong><p id="consent-analytics-description">Allows Google Analytics to help us understand site visits and improve content.</p></div>
+      <label class="switch"><input id="consent-analytics" type="checkbox" aria-label="Allow analytics cookies" aria-describedby="consent-analytics-description" data-consent-analytics><span class="switch-track"></span></label>
     </div>
     <div class="consent-option">
-      <div><strong>Advertising</strong><p>Allows Google Ads conversion measurement and advertising-related storage.</p></div>
-      <label class="switch"><input type="checkbox" aria-label="Allow advertising cookies" data-consent-advertising><span class="switch-track"></span></label>
+      <div><strong><label for="consent-advertising">Advertising</label></strong><p id="consent-advertising-description">Allows Google Ads conversion measurement and advertising-related storage.</p></div>
+      <label class="switch"><input id="consent-advertising" type="checkbox" aria-label="Allow advertising cookies" aria-describedby="consent-advertising-description" data-consent-advertising><span class="switch-track"></span></label>
     </div>
     <div class="cookie-dialog-actions">
       <button class="button" type="button" data-consent-action="save">Save preferences</button>

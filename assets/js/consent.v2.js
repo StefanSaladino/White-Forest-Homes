@@ -288,7 +288,8 @@
   dialog?.addEventListener("close", () => {
     document.body.classList.remove("modal-open");
     document.documentElement.classList.remove("modal-open");
-    const focusTarget = dialogOpener?.checkVisibility() ? dialogOpener : document.getElementById("main-content");
+    const openerVisible = dialogOpener?.isConnected && (typeof dialogOpener.checkVisibility !== "function" || dialogOpener.checkVisibility());
+    const focusTarget = openerVisible ? dialogOpener : document.getElementById("main-content");
     focusTarget?.focus({ preventScroll: true });
     dialogOpener = null;
   });
