@@ -167,16 +167,22 @@ for (const file of rootFiles) {
 // Project attribution is content-critical: church setting photos must never
 // migrate into the separate custom-home story again.
 const churchPhotoNames = ["dark-kitchen-detail", "dark-kitchen-island-angle", "dark-kitchen-island-front", "living-room-fireplace-watermarked", "living-room-wide", "open-plan-living-dining", "open-plan-living-kitchen"];
+const renovationPhotoNames = ["renovation-kitchen-island", "renovation-kitchen-angle", "renovation-kitchen-range", "renovation-washroom-one", "renovation-washroom-two-bath", "renovation-washroom-two-shower"];
 const customStory = documents.get("custom-home-case-study.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
 const churchStory = documents.get("church-kitchen.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
 for (const photo of churchPhotoNames) {
   if (customStory.includes(`assets/images/${photo}.webp`)) failures.push(`Custom-home case study contains a church photo: ${photo}`);
   if (!churchStory.includes(`assets/images/${photo}.webp`)) failures.push(`Church case study is missing its photograph: ${photo}`);
 }
+const renovationStory = documents.get("full-house-renovation.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
+for (const photo of renovationPhotoNames) {
+ if (!renovationStory.includes(`assets/images/${photo}.webp`)) failures.push(`Full-house case study is missing ${photo}`);
+ if (customStory.includes(`assets/images/${photo}.webp`) || churchStory.includes(`assets/images/${photo}.webp`)) failures.push(`Renovation photograph assigned to another project: ${photo}`);
+}
 for (const figure of (documents.get("projects.html") || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
   const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
   if (!photo) continue;
-  const expected = churchPhotoNames.includes(photo) ? "church" : "custom-home";
+  const expected = churchPhotoNames.includes(photo) ? "church" : renovationPhotoNames.includes(photo) ? "full-house" : "custom-home";
   if (!figure[0].includes(`data-project-category="${expected}"`)) failures.push(`Portfolio photo has the wrong project category: ${photo}`);
 }
 
