@@ -23,3 +23,5 @@ Case studies: homepage now leads with the church kitchen. Two dedicated project 
 Scope clarification: only the kitchen is attributed to White Forest on the church case study. The church setting does not imply White Forest rebuilt the building.
 
 Homepage correction: restored company and service introduction, Collingwood service-area H1, company-led title/description, service-first content and enquiry CTA. Detailed case studies remain on Projects and their dedicated project pages. Added missing business structured-data node using existing contact/service facts, without inventing an address.
+
+Photo attribution corrected: all IMG_4069–4075 views belong to the church. Removed church living/dining photographs and descriptions from the custom-home case study, added a church-setting gallery, corrected gallery captions and image descriptions, and added project-based photo filters. Church context photographs do not broaden White Forest’s stated kitchen scope.
