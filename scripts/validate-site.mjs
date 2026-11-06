@@ -33,6 +33,7 @@ const expectedStylesheets = [
   "assets/css/src/responsive/tablet.css?v=3",
   "assets/css/src/responsive/desktop.css?v=3",
   "assets/css/src/pages/real-work.css?v=5",
+  "assets/css/src/pages/editorial-review.css?v=1",
 ];
 
 function matches(text, expression) {

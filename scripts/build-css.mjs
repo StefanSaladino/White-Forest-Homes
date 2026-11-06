@@ -29,6 +29,7 @@ const sourceFiles = [
   "assets/css/src/responsive/tablet.css",
   "assets/css/src/responsive/desktop.css",
   "assets/css/src/pages/real-work.css",
+  "assets/css/src/pages/editorial-review.css",
 ];
 
 const bundle = (
