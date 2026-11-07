@@ -10,17 +10,17 @@ It is intended for branch inspection, not a production release or merge.
 - Homepage introduces the company with the supplied "Make more of your home" copy.
 - Four service options: Renovations, Additions, Custom Homes and Custom Carpentry.
 - Services overview, footer navigation, inquiry options and the homepage service catalog use the same categories. Existing kitchen service and project URLs remain available.
-- Featured work is presented as three large, staggered project stories with supporting detail photos, rather than a gallery grid.
+- Featured work is presented as four large, staggered project features with supporting detail photos, rather than a gallery grid.
 - Homepage process section and the complete four-stage Process page use the supplied copy.
 - About page introduces Danny Jenkins and includes the complete supplied biography and craftsmanship copy.
 - More existing client photographs appear on these pages; clickable photographs keep the accessible full-size viewer and restrained hover treatment.
 - Updated page-specific metadata, generated CSS bundle and stylesheet validation.
+- Seven supplied addition and carpentry photographs now appear in the portfolio with two new filters. Selected photos also appear on Home, Services, Renovations & Additions and Process.
 
 ## Awaiting supplied assets
 
 - Danny Jenkins's portrait: the About page currently shows a clearly captioned custom-home staircase photo in its media position. Replace that figure, including alt text and caption, after the portrait arrives. No generic or generated portrait is used.
-- Additional work photographs: retain project attribution when adding them. The church kitchen is White Forest's confirmed scope; wider church interiors must not imply a full church rebuild.
-- The Custom Carpentry category has a short inquiry invitation, because detailed service copy and supporting photographs have not been supplied yet.
+- Future photos should retain correct project attribution. The church kitchen is White Forest's confirmed scope; wider church interiors must not imply a full church rebuild.
 
 ## Verification
 

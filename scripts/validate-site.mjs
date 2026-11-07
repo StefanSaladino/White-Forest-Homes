@@ -180,10 +180,20 @@ for (const photo of renovationPhotoNames) {
  if (!renovationStory.includes(`assets/images/${photo}.webp`)) failures.push(`Full-house case study is missing ${photo}`);
  if (customStory.includes(`assets/images/${photo}.webp`) || churchStory.includes(`assets/images/${photo}.webp`)) failures.push(`Renovation photograph assigned to another project: ${photo}`);
 }
+const additionalPortfolioPhotos = new Map([
+  ["addition-windowed-exterior", "additions"],
+  ["addition-window-installation", "additions"],
+  ["addition-exterior-construction", "additions"],
+  ["carpentry-kitchen-cabinetry", "carpentry"],
+  ["carpentry-built-in-shelves", "carpentry"],
+  ["carpentry-wood-bench-detail", "carpentry"],
+  ["carpentry-wood-bench-installation", "carpentry"],
+]);
 for (const figure of (documents.get("projects.html") || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
   const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
   if (!photo) continue;
-  const expected = churchPhotoNames.includes(photo) ? "church" : renovationPhotoNames.includes(photo) ? "full-house" : "custom-home";
+  const expected = additionalPortfolioPhotos.get(photo) ??
+    (churchPhotoNames.includes(photo) ? "church" : renovationPhotoNames.includes(photo) ? "full-house" : "custom-home");
   if (!figure[0].includes(`data-project-category="${expected}"`)) failures.push(`Portfolio photo has the wrong project category: ${photo}`);
 }
 
