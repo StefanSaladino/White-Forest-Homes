@@ -2735,26 +2735,55 @@ html:not(.js) .filter-bar { display: none; }
   @keyframes viewer-appear { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 }
 
-/* Editorial project stories keep photographs and context together. */
-.case-stories { display:grid; gap:3.5rem; }
-.case-story { display:grid; gap:1.5rem; }
-.case-story-image { display:block; overflow:hidden; background:var(--paper-2); }
-.case-story-image img { width:100%; height:auto; }
-.case-story-copy { align-self:center; }
-.case-story-copy h3 { font-family:var(--serif); font-size:clamp(1.8rem,4vw,2.7rem); margin:.5rem 0 1rem; }
-.case-story-copy h3 a { text-decoration:none; }
-.case-story-copy p { color:var(--ink-soft); }
-@media(min-width:64rem) {
- .church-feature .page-hero-grid { grid-template-columns:42% 58%; }
- .church-feature .page-hero-media { min-height:36rem; background:#171b18; }
- .church-feature .page-hero-media img { object-fit:contain; background:#171b18; }
- .case-story { grid-template-columns:1.2fr 1fr; gap:3rem; }
- .case-story:nth-child(even) .case-story-image { order:2; }
- .case-story-image img { height:100%; object-fit:contain; }
+/* Project stories pair a wide view with a second room or detail. */
+.portfolio-intro .editorial-intro { align-items:end; }
+.portfolio-intro h1 { max-width:15ch; margin-bottom:0; }
+.case-story {
+  display:grid;
+  align-items:center;
+  gap:1.75rem 3rem;
+  padding-block:clamp(2rem, 5vw, 4rem);
+  border-top:1px solid var(--line);
+  scroll-margin-top:calc(var(--header-height) + 1rem);
 }
-@media(hover:hover) and (prefers-reduced-motion:no-preference) {
- .case-story-image img { transition:transform 420ms var(--ease),filter 420ms var(--ease); }
- .case-story-image:hover img { transform:scale(1.025); filter:grayscale(.08); }
+.case-story-copy { min-width:0; }
+.case-story-copy h3 { font-size:clamp(1.85rem, 4vw, 2.7rem); margin:.5rem 0 1rem; }
+.case-story-copy p { max-width:42rem; color:var(--ink-soft); margin-bottom:1.25rem; }
+.case-story-photos { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:clamp(.75rem, 2vw, 1.5rem); align-items:start; }
+.case-story-photos picture { display:block; }
+.case-story:last-child { padding-bottom:0; }
+
+.case-study-hero .page-hero-media { min-height:0; align-self:center; }
+.case-study-hero .page-hero-media picture,
+.case-study-hero .page-hero-media img { display:block; height:auto; }
+.case-study-hero .page-hero-media img { position:static; }
+.case-study-hero .expandable-photo:focus-visible { outline-offset:-5px; }
+/* Case studies: project introduction, overview, then photos grouped by space. */
+.case-study-hero--portrait .page-hero-media { background:var(--paper-2); align-self:stretch; display:grid; place-items:center; }
+.case-study-hero--portrait .page-hero-media > figure { width:min(100%, 28rem); }
+.case-study-room {
+  display:grid;
+  align-items:start;
+  gap:1.5rem 4rem;
+  border-top:1px solid var(--line);
+  padding-block:clamp(2rem, 5vw, 4rem);
+  scroll-margin-top:calc(var(--header-height) + 1rem);
+}
+.case-study-room:last-child { padding-bottom:0; }
+.case-study-room h3 { font-size:clamp(1.75rem, 3.2vw, 2.6rem); margin-bottom:.85rem; }
+.case-study-room p { max-width:39rem; color:var(--ink-soft); }
+.case-study-room-photos { display:grid; gap:1.5rem; min-width:0; }
+.case-study-room-photos picture { display:block; }
+.case-study-room-photos--single { width:min(100%, 31rem); }
+@media(min-width:42rem) {
+  .case-study-room-photos:not(.case-study-room-photos--single) { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .case-study-room-photos--lead > :first-child { grid-column:1 / -1; }
+}
+@media(min-width:64rem) {
+  .case-story { grid-template-columns:minmax(0, .95fr) minmax(0, 1.65fr); }
+  .case-study-hero .page-hero-grid { grid-template-columns:minmax(0, .88fr) minmax(0, 1.12fr); }
+  .case-study-hero--portrait .page-hero-media { padding:2rem; }
+  .case-study-room { grid-template-columns:minmax(0, .7fr) minmax(0, 1.4fr); }
 }
 
 /* Keep full project photographs visible on phones and tablets. */
@@ -2762,11 +2791,6 @@ html:not(.js) .filter-bar { display: none; }
  .page-hero-media { min-height:0; }
  .page-hero-media picture { display:block; height:auto; }
  .page-hero-media img { position:static; width:100%; height:auto; object-fit:contain; }
-}
-.case-story { min-width:0; }
-.case-story-copy { min-width:0; }
-@media(min-width:64rem) {
- .case-story { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); }
 }
 
 /* Homepage introduces the business; project stories live under Projects. */

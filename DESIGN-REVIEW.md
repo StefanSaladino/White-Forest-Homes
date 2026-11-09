@@ -17,10 +17,11 @@ It is intended for branch inspection, not a production release or merge.
 - Updated page-specific metadata, generated CSS bundle and stylesheet validation.
 - Seven supplied addition and carpentry photographs now appear in the portfolio with two new filters. Selected photos also appear on Home, Services, Renovations & Additions and Process.
 
+- The Projects page presents three featured case studies, each with two photographs. Each case study opens with a project introduction and overview, followed by photos grouped into room sections. The church case study credits the full renovation, and the whole-home case study shows the two washrooms separately. Existing project URLs remain available.
+
 ## Awaiting supplied assets
 
 - Danny Jenkins's portrait: the About page currently shows a clearly captioned custom-home staircase photo in its media position. Replace that figure, including alt text and caption, after the portrait arrives. No generic or generated portrait is used.
-- Future photos should retain correct project attribution. The church kitchen is White Forest's confirmed scope; wider church interiors must not imply a full church rebuild.
 
 ## Verification
 

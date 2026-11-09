@@ -32,7 +32,7 @@ const expectedStylesheets = [
   "assets/css/src/components/animations.css?v=4",
   "assets/css/src/responsive/tablet.css?v=3",
   "assets/css/src/responsive/desktop.css?v=3",
-  "assets/css/src/pages/real-work.css?v=5",
+  "assets/css/src/pages/real-work.css?v=6",
   "assets/css/src/pages/editorial-review.css?v=1",
 ];
 
@@ -165,7 +165,7 @@ for (const file of rootFiles) {
   }
 }
 
-// Project attribution is content-critical: church setting photos must never
+// Project attribution is content-critical: church renovation photos must never
 // migrate into the separate custom-home story again.
 const churchPhotoNames = ["dark-kitchen-detail", "dark-kitchen-island-angle", "dark-kitchen-island-front", "living-room-fireplace-watermarked", "living-room-wide", "open-plan-living-dining", "open-plan-living-kitchen"];
 const renovationPhotoNames = ["renovation-kitchen-island", "renovation-kitchen-angle", "renovation-kitchen-range", "renovation-washroom-one", "renovation-washroom-two-bath", "renovation-washroom-two-shower"];
@@ -189,7 +189,10 @@ const additionalPortfolioPhotos = new Map([
   ["carpentry-wood-bench-detail", "carpentry"],
   ["carpentry-wood-bench-installation", "carpentry"],
 ]);
-for (const figure of (documents.get("projects.html") || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
+// Only the filter gallery uses data-project-category; featured photos sit in their own case stories.
+const portfolioGallery = documents.get("projects.html")?.match(/<div class="work-gallery">([\s\S]*?)<\/div>/)?.[1];
+if (!portfolioGallery) failures.push("Projects page is missing its filter gallery.");
+for (const figure of (portfolioGallery || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
   const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
   if (!photo) continue;
   const expected = additionalPortfolioPhotos.get(photo) ??

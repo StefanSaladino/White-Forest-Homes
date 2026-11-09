@@ -18,12 +18,12 @@ Photo viewer: every gallery photograph and its full-photo text link opens an on-
 
 Service update: removed the discontinued exterior service from pages, navigation, inquiry choices and structured data. Removed its standalone page and sitemap entry; retained a hosting redirect to renovations. Sharing cards now use the real black kitchen photograph, with a new filename to refresh social previews.
 
-Case studies: homepage now leads with the church kitchen. Two dedicated project pages provide the confirmed setting and photo-led details, linked from homepage, portfolio and relevant service pages. Black kitchen photos are assigned to the church kitchen; remaining supplied photos are assigned to the custom home as instructed. No project addresses, dates, budgets or construction-history details have been invented. All previous changes are included.
+Case studies: the homepage features the full church renovation, alongside the custom home and full-house renovation. The Projects page links to all three case studies and the project galleries. The black kitchen and wider church interiors are from the church renovation. Project addresses, dates and budgets are not published.
 
-Scope clarification: only the kitchen is attributed to White Forest on the church case study. The church setting does not imply White Forest rebuilt the building.
+Current attribution: White Forest completed the full church renovation, including the black kitchen and surrounding interiors. The case study, portfolio, service links and project metadata reflect the confirmed scope.
 
 Homepage correction: restored company and service introduction, Collingwood service-area H1, company-led title/description, service-first content and enquiry CTA. Detailed case studies remain on Projects and their dedicated project pages. Added missing business structured-data node using existing contact/service facts, without inventing an address.
 
-Photo attribution corrected: all IMG_4069–4075 views belong to the church. Removed church living/dining photographs and descriptions from the custom-home case study, added a church-setting gallery, corrected gallery captions and image descriptions, and added project-based photo filters. Church context photographs do not broaden White Forest’s stated kitchen scope.
+Photo attribution corrected: all IMG_4069–4075 views belong to the church. Removed church living/dining photographs and descriptions from the custom-home case study, grouped all church photographs in the church renovation gallery, corrected captions and image descriptions, and added project-based photo filters.
 
 Added a separate full-house renovation case study with six supplied photographs and two clearly distinguished washrooms. Added its project preview and filter, homepage work preview, service-page galleries, sitemap, metadata and image descriptions. Copy describes the confirmed full-house scope and photographed details without inventing dates, locations, budgets or unseen work.
