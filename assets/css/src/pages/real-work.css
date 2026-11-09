@@ -1,5 +1,37 @@
 /* Real work portfolio and renovation-first presentation. */
-.page-hero-copy .button-row{margin-top:1.8rem}.page-hero-copy h1{max-width:18ch}.page-hero-media img{object-position:center}.brand-wordmark small{letter-spacing:.1em;font-size:.57rem}.work-gallery{display:grid;gap:2.5rem 1.5rem;align-items:start}.work-gallery figure{margin:0;min-width:0}.work-gallery picture{display:block;background:var(--paper-2)}.work-gallery img{width:100%;height:auto;display:block}.work-gallery figcaption{padding-top:.8rem;font-size:.9rem;color:var(--ink-soft)}.work-gallery figcaption a{display:block;margin-top:.4rem;font-size:.75rem;text-decoration:underline;text-underline-offset:.2em}.work-gallery [hidden]{display:none}.reading-width{max-width:54rem}.service-rows>a{display:flex;align-items:baseline;gap:1.25rem;padding:2rem 0;border-bottom:1px solid var(--line);text-decoration:none}.service-rows>a>div{flex:1}.service-rows h2{font-size:clamp(1.6rem,4vw,2.7rem);margin-bottom:.5rem}.service-rows p{margin:0;color:var(--ink-soft)}details{padding:1rem 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;font-weight:650}details p{margin-top:1rem}a,button{touch-action:manipulation}@media(min-width:42rem){.work-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.work-gallery picture{height:30rem}.work-gallery img{height:100%;object-fit:contain}}@media(min-width:64rem){.brand-wordmark small{font-size:.65rem}.page-hero-media{min-height:38rem}.page-hero-media img{object-fit:contain;background:var(--paper-2)}.page-hero-copy{padding-block:5rem}.work-gallery picture{height:36rem}}
+.page-hero-copy .button-row { margin-top:1.8rem; }
+.page-hero-copy h1 { max-width:18ch; }
+.page-hero-media img { object-position:center; }
+.brand-wordmark small { letter-spacing:.1em; font-size:.57rem; }
+.work-gallery figure { margin:0 0 1.75rem; min-width:0; }
+.work-gallery picture { display:block; }
+.work-gallery img { width:100%; height:auto; display:block; }
+.work-gallery figcaption { padding-top:.8rem; font-size:.9rem; color:var(--ink-soft); }
+.work-gallery .editorial-photo figcaption { margin-top:0; }
+.work-gallery figcaption a { display:block; margin-top:.4rem; font-size:.75rem; text-decoration:underline; text-underline-offset:.2em; }
+.work-gallery [hidden] { display:none; }
+.reading-width { max-width:54rem; }
+.service-rows > a { display:flex; align-items:baseline; gap:1.25rem; padding:2rem 0; border-bottom:1px solid var(--line); text-decoration:none; }
+.service-rows > a > div { flex:1; }
+.service-rows h2 { font-size:clamp(1.6rem,4vw,2.7rem); margin-bottom:.5rem; }
+.service-rows p { margin:0; color:var(--ink-soft); }
+details { padding:1rem 0; border-bottom:1px solid var(--line); }
+summary { cursor:pointer; font-weight:650; }
+details p { margin-top:1rem; }
+a,button { touch-action:manipulation; }
+
+@media(min-width:42rem) {
+  /* Flow in reading order without cropping photographs or padding them into fixed slots. */
+  .work-gallery { columns:2; column-gap:1.5rem; }
+  .work-gallery figure { display:inline-block; width:100%; vertical-align:top; break-inside:avoid; }
+}
+@media(min-width:64rem) {
+  .brand-wordmark small { font-size:.65rem; }
+  .page-hero-media { min-height:38rem; }
+  .page-hero-media img { object-fit:contain; background:var(--paper-2); }
+  .page-hero-copy { padding-block:5rem; }
+  .portfolio-gallery .work-gallery { columns:3; }
+}
 
 /* Expandable portfolio photographs and an accessible full-size viewer. */
 .expandable-photo { display:block; cursor:zoom-in; }
@@ -28,7 +60,7 @@
   display:grid;
   align-items:center;
   gap:1.75rem 3rem;
-  padding-block:clamp(2rem, 5vw, 4rem);
+  padding-block:clamp(1.5rem, 3.5vw, 3rem);
   border-top:1px solid var(--line);
   scroll-margin-top:calc(var(--header-height) + 1rem);
 }
@@ -49,10 +81,10 @@
 .case-study-hero--portrait .page-hero-media > figure { width:min(100%, 28rem); }
 .case-study-room {
   display:grid;
-  align-items:start;
-  gap:1.5rem 4rem;
+  align-items:center;
+  gap:1.5rem 3rem;
   border-top:1px solid var(--line);
-  padding-block:clamp(2rem, 5vw, 4rem);
+  padding-block:clamp(1.5rem, 3.5vw, 3rem);
   scroll-margin-top:calc(var(--header-height) + 1rem);
 }
 .case-study-room:last-child { padding-bottom:0; }
@@ -60,7 +92,7 @@
 .case-study-room p { max-width:39rem; color:var(--ink-soft); }
 .case-study-room-photos { display:grid; gap:1.5rem; min-width:0; }
 .case-study-room-photos picture { display:block; }
-.case-study-room-photos--single { width:min(100%, 31rem); }
+.case-study-room-photos--single { width:min(100%, 28rem); }
 @media(min-width:42rem) {
   .case-study-room-photos:not(.case-study-room-photos--single) { grid-template-columns:repeat(2, minmax(0, 1fr)); }
   .case-study-room-photos--lead > :first-child { grid-column:1 / -1; }
@@ -70,6 +102,8 @@
   .case-study-hero .page-hero-grid { grid-template-columns:minmax(0, .88fr) minmax(0, 1.12fr); }
   .case-study-hero--portrait .page-hero-media { padding:2rem; }
   .case-study-room { grid-template-columns:minmax(0, .7fr) minmax(0, 1.4fr); }
+  .case-study-room--single { grid-template-columns:minmax(0, 1fr) minmax(0, 28rem); }
+  .case-study-room--single .case-study-room-copy { max-width:34rem; }
 }
 
 /* Keep full project photographs visible on phones and tablets. */

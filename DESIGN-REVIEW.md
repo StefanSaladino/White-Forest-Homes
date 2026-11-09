@@ -19,6 +19,8 @@ It is intended for branch inspection, not a production release or merge.
 
 - The Projects page presents three featured case studies, each with two photographs. Each case study opens with a project introduction and overview, followed by photos grouped into room sections. The church case study credits the full renovation, and the whole-home case study shows the two washrooms separately. Existing project URLs remain available.
 
+- The spacing review added client work alongside the homepage and About introductions, service descriptions, and the construction and completion steps. Service detail pages now keep case-study links beside their corresponding photos and end with the inquiry CTA. Galleries display the full image proportions, and case studies keep their separate room sections.
+
 ## Awaiting supplied assets
 
 - Danny Jenkins's portrait: the About page currently shows a clearly captioned custom-home staircase photo in its media position. Replace that figure, including alt text and caption, after the portrait arrives. No generic or generated portrait is used.

@@ -32,8 +32,8 @@ const expectedStylesheets = [
   "assets/css/src/components/animations.css?v=4",
   "assets/css/src/responsive/tablet.css?v=3",
   "assets/css/src/responsive/desktop.css?v=3",
-  "assets/css/src/pages/real-work.css?v=6",
-  "assets/css/src/pages/editorial-review.css?v=1",
+  "assets/css/src/pages/real-work.css?v=7",
+  "assets/css/src/pages/editorial-review.css?v=2",
 ];
 
 function matches(text, expression) {
