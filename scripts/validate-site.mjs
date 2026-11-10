@@ -167,7 +167,7 @@ for (const file of rootFiles) {
 
 // Project attribution is content-critical: church renovation photos must never
 // migrate into the separate custom-home story again.
-const churchPhotoNames = ["dark-kitchen-detail", "dark-kitchen-island-angle", "dark-kitchen-island-front", "living-room-fireplace-watermarked", "living-room-wide", "open-plan-living-dining", "open-plan-living-kitchen"];
+const churchPhotoNames = ["dark-kitchen-detail", "dark-kitchen-island-angle", "dark-kitchen-island-front", "living-room-fireplace-watermarked", "living-room-wide", "open-plan-living-dining", "open-plan-living-kitchen", "church-brick-and-stone-exterior", "church-arched-entry-detail", "church-entry-staircase", "church-bedroom"];
 const renovationPhotoNames = ["renovation-kitchen-island", "renovation-kitchen-angle", "renovation-kitchen-range", "renovation-washroom-one", "renovation-washroom-two-bath", "renovation-washroom-two-shower"];
 const customStory = documents.get("custom-home-case-study.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
 const churchStory = documents.get("church-kitchen.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";

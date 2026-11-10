@@ -20,3 +20,15 @@ Seven additional client-supplied photographs are stored as full-frame WebP image
 - `IMG_4302.jpg` → `carpentry-wood-bench-installation.webp` (carpentry).
 
 `IMG_0386(1).JPEG` and `IMG_0382(1).JPEG` show the already-published full-house renovation kitchen angles. The existing `renovation-kitchen-angle.webp` and `renovation-kitchen-range.webp` are retained.
+
+## Retouched site photographs
+
+The selected files below are retouched from the two supplied photo batches and use the same responsive WebP sizes as the existing photographs. The church exterior photo provides context for the project.
+
+- `IMG_9428.jpg` → `church-bedroom.webp`.
+- `IMG_9429.jpg` → `church-brick-and-stone-exterior.webp`.
+- `IMG_9430.jpg` → `church-arched-entry-detail.webp`.
+- `IMG_9431.jpg` → `church-entry-staircase.webp`.
+- `IMG_9439.PNG` → `white-kitchen-pendant-lighting.webp` (Projects introduction).
+- `IMG_9440.PNG` → `laundry-built-in-cabinetry.webp` (Process).
+- `IMG_9441.PNG` → `arched-double-doors-hallway.webp` (About).
