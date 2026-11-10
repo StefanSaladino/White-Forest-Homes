@@ -18,7 +18,7 @@ const documents = new Map(await Promise.all(htmlFiles.map(async (file) => [file,
 const expectedStylesheets = [
   "assets/css/src/tokens.css?v=3",
   "assets/css/src/base/foundations.css?v=3",
-  "assets/css/src/base/global.css?v=3",
+  "assets/css/src/base/global.css?v=4",
   "assets/css/src/components/navigation.css?v=6",
   "assets/css/src/components/heroes.css?v=3",
   "assets/css/src/pages/home.css?v=3",
@@ -31,9 +31,9 @@ const expectedStylesheets = [
   "assets/css/src/pages/utility-pages.css?v=3",
   "assets/css/src/components/animations.css?v=4",
   "assets/css/src/responsive/tablet.css?v=3",
-  "assets/css/src/responsive/desktop.css?v=3",
-  "assets/css/src/pages/real-work.css?v=7",
-  "assets/css/src/pages/editorial-review.css?v=2",
+  "assets/css/src/responsive/desktop.css?v=4",
+  "assets/css/src/pages/real-work.css?v=8",
+  "assets/css/src/pages/editorial-review.css?v=3",
 ];
 
 function matches(text, expression) {

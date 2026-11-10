@@ -10,7 +10,7 @@ It is intended for branch inspection, not a production release or merge.
 - Homepage introduces the company with the supplied "Make more of your home" copy.
 - Four service options: Renovations, Additions, Custom Homes and Custom Carpentry.
 - Services overview, footer navigation, inquiry options and the homepage service catalog use the same categories. Existing kitchen service and project URLs remain available.
-- Featured work is presented as four large, staggered project features with supporting detail photos, rather than a gallery grid.
+- Featured work is presented as four large project features with a consistent text-first sequence and supporting photographs.
 - Homepage process section and the complete four-stage Process page use the supplied copy.
 - About page introduces Danny Jenkins and includes the complete supplied biography and craftsmanship copy.
 - More existing client photographs appear on these pages; clickable photographs keep the accessible full-size viewer and restrained hover treatment.
@@ -65,6 +65,14 @@ The screenshot review caught a visual problem the earlier overflow checks did no
 The site-wide follow-up also corrected cramped photo pairs on Projects and the renovation/kitchen service pages, indented service photos, and portrait-photo width caps that left empty space on landscape phones. Photos stack in one column on phones; paired and inset compositions begin at their tablet/desktop breakpoints. Responsive image `sizes` values were updated to match the new display widths.
 
 Verified all 111 main-content photo placements across all 15 pages at 11 sizes: 320×568, 360×640, 390×844, 430×932, 568×320, 667×375, 671×900, 672×900, 768×1024, 1024×768 and 1440×900 (165 page/viewport checks). No remaining undersized or off-centre mobile photos, image distortion, caption overflow or page overflow were found in those checks. Both originally flagged photos were visually inspected at 390×844 and their expand/close interactions were verified. Static site validation and the CSS bundle check passed.
+
+## Homepage featured-work order
+
+All four featured projects now use the same source and mobile reading order: project label, heading, description, project link, then photographs with their captions. The church photos no longer precede its introduction, and the renovation photos are no longer split around the text. Desktop uses a consistent text column beside the photo group; tablet keeps the text above the photo group. Existing copy, project destinations, six featured photos and full-size viewing remain available.
+
+Replaced the separate church/renovation/custom layout rules with one shared feature layout. Refreshed shared stylesheet query versions across all pages and the validator's stylesheet manifest, including the preceding viewport fixes, so returning visitors receive the current styles.
+
+Verified source order and visible order for all four features at 16 sizes: 320×568, 360×640, 390×844, 430×932, 568×320, 667×375, 671×900, 672×900, 768×1024, 820×1180, 1023×768, 1024×768, 1280×800, 1440×900, 1920×1080 and 2560×1440. No order mismatches, narrow mobile photos, distortion, caption overflow or page overflow were found. Visually inspected phone, tablet and desktop compositions; verified photo expansion/close after restructuring. All nine homepage images loaded in the full-page scroll pass. Static validation and CSS bundle checks passed.
 
 ## Local inspection
 
