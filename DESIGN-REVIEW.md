@@ -10,7 +10,7 @@ It is intended for branch inspection, not a production release or merge.
 - Homepage introduces the company with the supplied "Make more of your home" copy.
 - Four service options: Renovations, Additions, Custom Homes and Custom Carpentry.
 - Services overview, footer navigation, inquiry options and the homepage service catalog use the same categories. Existing kitchen service and project URLs remain available.
-- Featured work is presented as four large project features with a consistent text-first sequence and supporting photographs.
+- Featured work presents three projects: Church Renovation, Full-Home Renovation and Custom Home, with a consistent text-first sequence and supporting photographs. The fourth addition feature was removed from the homepage at the client’s request.
 - Homepage process section and the complete four-stage Process page use the supplied copy.
 - About page introduces Danny Jenkins and includes the complete supplied biography and craftsmanship copy.
 - More existing client photographs appear on these pages; clickable photographs keep the accessible full-size viewer and restrained hover treatment.
