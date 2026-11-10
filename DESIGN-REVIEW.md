@@ -58,6 +58,14 @@ All 15 HTML pages were checked at 15 viewport sizes (225 page/viewport combinati
 
 This is a Chrome responsive-frame audit, not verification on physical devices or Safari. The existing full browser-audit script contains obsolete project-card/filter assertions and was not used as evidence for this branch. Existing production setup items (tracking IDs, real form delivery, custom-domain URLs) remain in `TODO-PRODUCTION.md`.
 
+## Follow-up mobile photo review
+
+The screenshot review caught a visual problem the earlier overflow checks did not: the homepage staircase and washroom used desktop-style percentage widths on phones. Both now fill the content column below 672px.
+
+The site-wide follow-up also corrected cramped photo pairs on Projects and the renovation/kitchen service pages, indented service photos, and portrait-photo width caps that left empty space on landscape phones. Photos stack in one column on phones; paired and inset compositions begin at their tablet/desktop breakpoints. Responsive image `sizes` values were updated to match the new display widths.
+
+Verified all 111 main-content photo placements across all 15 pages at 11 sizes: 320×568, 360×640, 390×844, 430×932, 568×320, 667×375, 671×900, 672×900, 768×1024, 1024×768 and 1440×900 (165 page/viewport checks). No remaining undersized or off-centre mobile photos, image distortion, caption overflow or page overflow were found in those checks. Both originally flagged photos were visually inspected at 390×844 and their expand/close interactions were verified. Static site validation and the CSS bundle check passed.
+
 ## Local inspection
 
 Run `npm run serve` and open `http://localhost:8080/`.
