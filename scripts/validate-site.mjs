@@ -180,7 +180,22 @@ for (const photo of renovationPhotoNames) {
  if (!renovationStory.includes(`assets/images/${photo}.webp`)) failures.push(`Full-house case study is missing ${photo}`);
  if (customStory.includes(`assets/images/${photo}.webp`) || churchStory.includes(`assets/images/${photo}.webp`)) failures.push(`Renovation photograph assigned to another project: ${photo}`);
 }
+// New general-work photos stay separate from the three named project case studies.
+const generalWorkPhotos = ["painted-double-doors-shiplap", "shiplap-fireplace-surround", "vaulted-kitchen-navy-island", "blue-house-winter-exterior", "white-kitchen-pendant-lighting", "laundry-built-in-cabinetry", "arched-double-doors-hallway"];
+for (const photo of generalWorkPhotos) {
+  if ([customStory, churchStory, renovationStory].some(story => story.includes(`assets/images/${photo}.webp`))) {
+    failures.push(`Unassigned work photo included in a named project: ${photo}`);
+  }
+}
 const additionalPortfolioPhotos = new Map([
+  ["painted-double-doors-shiplap", "more-work"],
+  ["shiplap-fireplace-surround", "more-work"],
+  ["vaulted-kitchen-navy-island", "more-work"],
+  ["blue-house-winter-exterior", "more-work"],
+  ["white-kitchen-pendant-lighting", "more-work"],
+  ["laundry-built-in-cabinetry", "more-work"],
+  ["arched-double-doors-hallway", "more-work"],
+
   ["addition-windowed-exterior", "additions"],
   ["addition-window-installation", "additions"],
   ["addition-exterior-construction", "additions"],
