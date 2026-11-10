@@ -29,6 +29,8 @@
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
+    /* The drawer animation must not carry into the inline desktop navigation. */
+    transition: none;
   }
 
   .site-nav-list li,

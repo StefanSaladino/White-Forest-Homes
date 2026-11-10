@@ -300,6 +300,7 @@ p:last-child {
   min-height: 3.25rem;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   padding: 0.85rem 1.35rem;
   border: 1px solid transparent;
   border-radius: 0;
@@ -373,6 +374,15 @@ p:last-child {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.55;
+}
+
+/* Decorative link arrows use SVG so they do not depend on system glyph coverage. */
+.link-arrow {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 1rem;
+  vertical-align: -0.15em;
 }
 /* =========================================================
    HEADER & MOBILE NAVIGATION
@@ -2404,6 +2414,8 @@ html:not(.js) .filter-bar { display: none; }
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
+    /* The drawer animation must not carry into the inline desktop navigation. */
+    transition: none;
   }
 
   .site-nav-list li,

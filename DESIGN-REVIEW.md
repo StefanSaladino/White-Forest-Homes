@@ -27,15 +27,36 @@ It is intended for branch inspection, not a production release or merge.
 
 - Danny Jenkins's portrait: the About page currently shows a clearly captioned custom-home staircase photo in its media position. Replace that figure, including alt text and caption, after the portrait arrives. No generic or generated portrait is used.
 
-## Verification
+## Viewport audit — 10 November 2026
 
+All 15 HTML pages were checked at 15 viewport sizes (225 page/viewport combinations), including narrow phones, short landscape screens, tablets, the 1024px navigation breakpoint and wide desktops.
+
+| Coverage | Viewport sizes (CSS pixels) |
+| --- | --- |
+| Phones | 320×568, 360×640, 390×844, 430×932 |
+| Landscape phones | 568×320, 667×375 |
+| Tablets and breakpoints | 672×900, 768×1024, 820×1180, 1023×768, 1024×768 |
+| Desktops | 1280×800, 1440×900, 1920×1080, 2560×1440 |
+
+### Fixes from this audit
+
+- Replaced 53 decorative text arrows with SVG icons. The system font in the audit browser rendered some diagonal arrows as missing-glyph boxes. Arrow direction and accessible link names are preserved.
+- Disabled the mobile drawer transition for inline desktop navigation. Resizing across 1024px previously caused a brief horizontal spill while the drawer transform interpolated; the desktop menu now takes its final position immediately.
+
+### Results
+
+- Full-page scroll passes and geometry checks found no remaining horizontal overflow, clipped text, unintended text/image overlap or image distortion. The complete viewport matrix was checked again after the fixes for overflow, text clipping and misplaced elements.
+- All 114 WebP assets decoded successfully. The full Projects gallery loaded all 45 main-content images without broken or pending images in its tablet loading check.
+- Mobile navigation checked at six sizes, including both short landscape sizes: solid background, reachable contact links, keyboard focus wrapping, Escape and focus return. Opening at 1023px and resizing to 1024px correctly restores page scrolling and removes background inertness.
+- Cookie preferences checked at 320×568, 568×320, 667×375 and 1280×800: optional categories toggle independently, saved values persist on reopening, rejection closes the dialog and releases the scroll lock. Switches retain their 48×26px shape; dialog actions remain reachable by scrolling on short screens.
+- Photo expansion checked at the same four sizes: images load with `object-fit: contain`, the close control is available, Escape closes the viewer and focus returns to the original photo link.
+- All seven gallery filters return the expected counts at phone and wide-desktop sizes: 38 total, 11 church, 7 custom home, 6 full-house, 3 additions, 4 carpentry and 7 more work.
+- Inquiry form checked for required fields, malformed-email validation and valid field states without sending an inquiry. It uses one column on a narrow phone and two on desktop. Service links correctly preselect Renovation and Custom Carpentry and focus the inquiry heading. FAQ disclosures work with the keyboard.
+- Visually reviewed phone, tablet and desktop compositions, photo framing, captions and the new snowy-house placement. No site-origin JavaScript errors were observed.
 - `npm run validate`: all 15 HTML files passed internal links, fragments, image references, SEO metadata, heading counts, accessible reference targets, JSON-LD and project attribution checks.
-- `npm run check:js`: passed.
-- `npm run check:css`: passed after `npm run build:css`.
-- Chrome responsive-frame checks for Home, About, Process and Services at viewport widths 320, 390, 768, 1024 and 1280 pixels: no settled horizontal overflow or overflowing headings in 20 cases. This checks responsive CSS in browser frames; it is not a physical-device or Safari test.
-- Manually inspected phone, tablet and desktop compositions. Verified mobile menu/header, photo expansion/close, cookie preferences/save, and Custom Carpentry inquiry preselection.
-- The existing full browser-audit script contains obsolete project-card/filter assertions from before the real-work redesign; it was not used as evidence for this branch.
-- Existing production setup items (tracking IDs, real form delivery, custom-domain URLs) remain in `TODO-PRODUCTION.md` and are outside this presentation update.
+- `npm run check:js`, `npm run check:css` and `git diff --check`: passed.
+
+This is a Chrome responsive-frame audit, not verification on physical devices or Safari. The existing full browser-audit script contains obsolete project-card/filter assertions and was not used as evidence for this branch. Existing production setup items (tracking IDs, real form delivery, custom-domain URLs) remain in `TODO-PRODUCTION.md`.
 
 ## Local inspection
 
