@@ -52,19 +52,23 @@
 .process-chapter-heading .editorial-number { padding-top: .4rem; }
 .process-chapter h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); max-width: 19ch; margin: 0; }
 .process-chapter h3 { font-size: clamp(1.5rem, 2.7vw, 2.2rem); margin-bottom: 1.5rem; }
-.about-opening h1 { font-size: clamp(2.7rem, 5.7vw, 5.5rem); max-width: 25ch; margin-bottom: clamp(2.5rem, 6vw, 5rem); }
-.founder-story { display: grid; gap: 2.5rem 5rem; align-items: start; }
-.about-founder-name { border-left: 1px solid var(--line); padding-left: 1.5rem; }
-.about-founder-name > span { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; }
-.about-founder-name p { color: var(--ink-soft); margin-top: 1rem; }
-.founder-story .editorial-prose { align-self: center; }
-.founder-story h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
-.about-work-pair { display: grid; gap: 2rem; margin-top: clamp(2.5rem, 6vw, 5rem); align-items: start; }
+.about-opening { padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.about-opening h1 { font-size: clamp(2.35rem, 5.15vw, 4.8rem); max-width: 25ch; margin-bottom: clamp(1.75rem, 3.75vw, 3.25rem); }
+.founder-story { display: grid; gap: 2rem; align-items: start; padding-top: clamp(1.5rem, 3vw, 2.5rem); border-top: 1px solid var(--line); }
+.about-founder-visual { min-width: 0; }
+.about-headshot-note { display: block; margin-top: .7rem; padding: .55rem .75rem; border-left: 2px solid var(--moss); background: var(--paper-2); color: var(--forest); font-size: .82rem; }
+.about-founder-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0 0; }
+.about-founder-facts > div { display: flex; flex-direction: column; gap: .3rem; padding: .85rem; border-top: 1px solid var(--line); }
+.about-founder-facts dt { order: 1; font-size: .75rem; line-height: 1.45; color: var(--ink-soft); }
+.about-founder-facts dd { margin: 0; font-family: var(--serif); font-size: clamp(1.45rem, 3vw, 2.15rem); line-height: 1.1; color: var(--forest); }
+.founder-story h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); margin-bottom: .35rem; }
+.founder-story .about-founder-role { margin: 0 0 1.3rem; font-weight: 600; color: var(--forest); }
+.about-standard { background: var(--paper-2); border-top: 1px solid var(--line); }
+.about-work-gallery { display: grid; gap: clamp(1.25rem, 2.5vw, 2rem); margin-top: clamp(1.75rem, 4vw, 3rem); align-items: start; }
 
 @media (min-width: 42rem) {
   .featured-project-photos--pair { grid-template-columns:minmax(0, 1.5fr) minmax(0, 1fr); }
   .home-intro-copy { padding-inline: max(1.5rem, calc((100vw - var(--container)) / 2)); }
-  .about-work-pair { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
 }
 
 @media (min-width: 64rem) {
@@ -82,7 +86,7 @@
   .home-process-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: 6rem; }
   .process-chapter { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: 3.5rem; }
   .process-chapter-heading { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1.5rem; }
-  .founder-story { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: 6rem; }
+  .founder-story { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: clamp(2.5rem, 5vw, 5rem); }
 }
 
 .home-intro-copy .button { gap: .75rem; }
@@ -93,7 +97,6 @@
 .photo-split-copy > .text-link { margin-top:.65rem; }
 .photo-split picture, .editorial-services--illustrated picture, .process-chapter--photo picture { display:block; }
 .photo-pair { display:grid; grid-template-columns:minmax(0, 1fr); gap:clamp(.75rem, 2vw, 1.5rem); min-width:0; }
-.about-founder-name { margin-bottom:1.5rem; }
 .service-catalog { padding-top:0; }
 .editorial-services--summary .editorial-service,
 .editorial-services--illustrated .editorial-service { padding-block:clamp(1.5rem, 3vw, 2.5rem); }
@@ -108,6 +111,7 @@
 }
 
 @media (min-width:48rem) {
+  .about-work-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .editorial-services--summary { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); column-gap:clamp(2rem, 5vw, 4rem); }
   .editorial-services--summary .editorial-service { grid-template-columns:2rem minmax(0, 1fr); gap:.6rem 1rem; }
   .editorial-services--summary .editorial-service > .text-link { grid-column:2; align-self:end; justify-self:start; }
