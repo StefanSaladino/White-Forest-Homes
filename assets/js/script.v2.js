@@ -129,12 +129,14 @@
 
   function applyProjectFilter(category) {
     let visibleCount = 0;
+    const filter = Array.from(filterButtons).find((button) => button.dataset.projectFilter === category);
+    const matches = (filter?.dataset.projectMatches || category).split(" ");
 
     projectTiles.forEach((tile) => {
       const categories = String(tile.dataset.projectCategory || "")
         .split(" ")
         .filter(Boolean);
-      const visible = category === "all" || categories.includes(category);
+      const visible = category === "all" || categories.some((value) => matches.includes(value));
 
       tile.hidden = !visible;
       if (visible) visibleCount += 1;
@@ -163,9 +165,15 @@
     if (!window.location.hash) return;
     let id;
     try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
-    const target = document.getElementById(id);
+    let target = document.getElementById(id);
     if (!target) return;
-    if (target.closest("[data-project-category]")?.hidden) applyProjectFilter("all");
+    if (target.dataset.galleryFilter) {
+      applyProjectFilter(target.dataset.galleryFilter);
+      // Land above the filtered photos so visitors can see and change the filter.
+      target = document.getElementById("portfolio-gallery-title") || target;
+    } else if (target.closest("[data-project-category]")?.hidden) {
+      applyProjectFilter("all");
+    }
     target.closest("[data-reveal]")?.classList.add("is-visible");
     if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
     target.focus({ preventScroll: true });

@@ -25,7 +25,7 @@ It is intended for branch inspection, not a production release or merge.
 
 ## Awaiting supplied assets
 
-- Danny Jenkins's portrait: the About page currently shows a clearly captioned custom-home staircase photo in its media position. Replace that figure, including alt text and caption, after the portrait arrives. No generic or generated portrait is used.
+- Danny Jenkins's portrait: the About page uses the existing fitted cabinetry photo, clearly captioned as project work, on the left of his consolidated biography. Replace that figure, including alt text and caption, after the portrait arrives. No generic or generated portrait is used.
 
 ## Viewport audit — 10 November 2026
 
