@@ -36,9 +36,9 @@ The selected files below are retouched from the two supplied photo batches and u
 - `IMG_9441.PNG` → `arched-double-doors-hallway.webp` (About).
 
 
-## Full second-batch rollout
+## Second custom home and arched closet
 
-All seven second-batch photographs now appear under "More work" in the portfolio gallery. These general White Forest work examples are not assigned to any of the three named case studies.
+Six photos from the second batch show a separate custom home and appear in the portfolio under Custom Homes. The arched closet photo appears under Custom Carpentry.
 
 - `IMG_9434.PNG` → `painted-double-doors-shiplap.webp` (Home process preview, Kitchens & Interiors, gallery).
 - `IMG_9435.PNG` → `shiplap-fireplace-surround.webp` (Kitchens & Interiors, gallery).
@@ -46,6 +46,6 @@ All seven second-batch photographs now appear under "More work" in the portfolio
 - `IMG_9438.PNG` → `blue-house-winter-exterior.webp` (Home introduction, Services introduction, gallery).
 - `IMG_9439.PNG` → `white-kitchen-pendant-lighting.webp` (Projects introduction, Kitchens & Interiors, gallery).
 - `IMG_9440.PNG` → `laundry-built-in-cabinetry.webp` (Process planning step, Kitchens & Interiors, gallery).
-- `IMG_9441.PNG` → `arched-double-doors-hallway.webp` (About craftsmanship, Contact hero, gallery).
+- `IMG_9441.PNG` → `arched-double-doors-hallway.webp` (About craftsmanship, Contact hero, Custom Carpentry gallery).
 
 The original custom-home staircase and white-kitchen photographs remain in their own case study and relevant project views. Repeated generic placements have been replaced with newer work. The black church kitchen remains the homepage hero and social-card image.

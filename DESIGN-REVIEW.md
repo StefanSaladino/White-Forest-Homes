@@ -21,7 +21,7 @@ It is intended for branch inspection, not a production release or merge.
 
 - The spacing review added client work alongside the homepage and About introductions, service descriptions, and the construction and completion steps. Service detail pages now keep case-study links beside their corresponding photos and end with the inquiry CTA. Galleries display the full image proportions, and case studies keep their separate room sections.
 
-- All seven photos in the second retouched batch are visible under the gallery’s "More work" filter. The snowy blue house appears beside the homepage and Services introductions. Generic placements of the original staircase and white kitchen have each dropped from seven to four; their named case studies retain the correct photographs.
+- The gallery’s Custom Homes filter shows both custom homes, with distinct captions for each. The arched closet photo appears under Custom Carpentry. The snowy blue house appears beside the homepage and Services introductions. Generic placements of the original staircase and white kitchen have each dropped from seven to four; their named case studies retain the correct photographs.
 
 ## Awaiting supplied assets
 
