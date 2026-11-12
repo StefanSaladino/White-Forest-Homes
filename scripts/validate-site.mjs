@@ -199,6 +199,8 @@ const additionalPortfolioPhotos = new Map([
   ["addition-windowed-exterior", "additions"],
   ["addition-window-installation", "additions"],
   ["addition-exterior-construction", "additions"],
+  ["addition-progress-wide", "additions"],
+  ["addition-progress-side", "additions"],
   ["carpentry-kitchen-cabinetry", "carpentry"],
   ["carpentry-built-in-shelves", "carpentry"],
   ["carpentry-wood-bench-detail", "carpentry"],

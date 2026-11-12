@@ -9,11 +9,13 @@ Separate full-house renovation: FullSizeRender.jpeg, IMG_0386.jpeg and IMG_0382.
 
 ## Additions and custom carpentry
 
-Seven additional client-supplied photographs are stored as full-frame WebP images with 480px and 800px variants. Construction photographs document visible work stages; the images do not establish a before-and-after pairing.
+Nine additional client-supplied photographs are stored as full-frame WebP images with 480px and 800px variants. Construction photographs document visible work stages; the images do not establish a before-and-after pairing.
 
 - `IMG_2409.jpg` → `addition-windowed-exterior.webp` (additions).
 - `IMG_3976.jpg` → `addition-window-installation.webp` (additions).
 - `IMG_4113.jpg` → `addition-exterior-construction.webp` (additions).
+- `IMG_7006(1).jpeg` → `addition-progress-wide.webp` (retouched addition progress photo).
+- `IMG_7004.jpeg` → `addition-progress-side.webp` (retouched addition progress photo).
 - `IMG_2380.jpg` → `carpentry-kitchen-cabinetry.webp` (carpentry).
 - `IMG_2381.jpg` → `carpentry-built-in-shelves.webp` (carpentry).
 - `IMG_4301.jpg` → `carpentry-wood-bench-detail.webp` (carpentry).
