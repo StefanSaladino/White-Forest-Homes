@@ -262,25 +262,26 @@
     /** Handle visitors who already had a saved consent choice. */
     window.setTimeout(trackLeadOnce, 650);
   }
-  // Full-photo links keep their native destination when JS/dialogs are unavailable.
+  // Only the portfolio gallery enables photo enlargement.
   const photoViewer = document.querySelector("[data-photo-viewer]");
-  if (photoViewer && typeof photoViewer.showModal === "function") {
+  const photoGallery = document.querySelector(".portfolio-gallery");
+  if (photoGallery && photoViewer && typeof photoViewer.showModal === "function") {
     const enlargedImage = photoViewer.querySelector("[data-photo-image]");
     const photoTitle = photoViewer.querySelector("#photo-viewer-title");
     let photoTrigger = null;
-    document.addEventListener("click", (event) => {
-      const link = event.target.closest("a[data-photo-expand]");
-      if (!link || event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      photoTrigger = link;
-      const original = link.closest("figure")?.querySelector("img");
-      enlargedImage.src = link.href;
-      enlargedImage.alt = original?.alt || "White Forest work photograph";
-      if (original) {
-        enlargedImage.width = original.width;
-        enlargedImage.height = original.height;
-      }
-      photoTitle.textContent = original?.alt || "White Forest work photograph";
+    photoGallery.querySelectorAll("button[data-photo-expand]").forEach((button) => {
+      button.disabled = false;
+    });
+    photoGallery.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-photo-expand]");
+      const original = button?.querySelector("img");
+      if (!original || button.disabled || photoViewer.open) return;
+      photoTrigger = button;
+      enlargedImage.src = original.src;
+      enlargedImage.alt = original.alt || "White Forest work photograph";
+      enlargedImage.width = original.width;
+      enlargedImage.height = original.height;
+      photoTitle.textContent = enlargedImage.alt;
       document.documentElement.classList.add("modal-open");
       document.body.classList.add("modal-open");
       photoViewer.showModal();

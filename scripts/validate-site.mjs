@@ -32,7 +32,7 @@ const expectedStylesheets = [
   "assets/css/src/components/animations.css?v=4",
   "assets/css/src/responsive/tablet.css?v=3",
   "assets/css/src/responsive/desktop.css?v=4",
-  "assets/css/src/pages/real-work.css?v=8",
+  "assets/css/src/pages/real-work.css?v=9",
   "assets/css/src/pages/editorial-review.css?v=4",
 ];
 
