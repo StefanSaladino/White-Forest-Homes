@@ -84,7 +84,7 @@ for (const file of htmlFiles) {
   }
 
   const styles = photoLedPages.has(file)
-    ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=2"]
+    ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=4"]
     : expectedStylesheets;
   if (JSON.stringify(stylesheetRefs) !== JSON.stringify(styles)) {
     failures.push(`${file}: modular stylesheet list is missing or out of order`);

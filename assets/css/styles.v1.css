@@ -3132,7 +3132,40 @@ a,button { touch-action:manipulation; }
   padding-block: 1rem;
   border-top: 1px solid var(--photo-rule);
 }
+.photo-process-step {
+  display: grid;
+  grid-template-areas: "copy" "photo";
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3.5rem);
+  padding-block: clamp(1.35rem, 3.6vw, 3rem);
+  border-top: 1px solid var(--photo-rule);
+}
+.photo-process-step:last-child { border-bottom: 1px solid var(--photo-rule); }
+.photo-process-copy { grid-area: copy; min-width: 0; }
+.photo-process-copy h2 { margin: .35rem 0 .65rem; font-size: clamp(1.8rem, 3.7vw, 3rem); text-wrap: wrap; }
+.photo-process-copy p { max-width: 62ch; color: var(--ink-soft); }
+.photo-process-step figure { grid-area: photo; min-width: 0; margin: 0; }
+.photo-process-step img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 55%;
+}
+.photo-process-step:first-child img { object-position: center 43%; }
+.photo-process-step:last-child img { object-position: center 62%; }
 .photo-process .photo-cta { margin-top: clamp(2.5rem, 6vw, 5rem); }
+
+@media (min-width: 48rem) {
+  .photo-process-step {
+    grid-template-areas: "copy photo";
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+  .photo-process-step:nth-child(even) {
+    grid-template-areas: "photo copy";
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+}
 
 .photo-cta { background: var(--forest); color: var(--white); }
 .photo-cta-inner {
