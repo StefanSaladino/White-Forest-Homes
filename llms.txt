@@ -4,7 +4,7 @@ Residential renovations and additions serving Collingwood, Ontario and surroundi
 
 Work photography: only the supplied White Forest work images. Project addresses and dates are not published.
 
-Pages: index.html, projects.html, services.html, about.html, contact.html and privacy.html.
+Pages: index.html, projects.html, services.html, process.html, about.html, contact.html and privacy.html.
 
 Phone: +1-705-970-6325
 Email: Whiteforesthomes@hotmail.com

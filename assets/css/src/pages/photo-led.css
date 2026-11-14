@@ -146,29 +146,12 @@
 .photo-service p { color: var(--ink-soft); max-width: 43ch; }
 .photo-service img { width: 100%; aspect-ratio: 1.52; object-fit: cover; object-position: center 57%; }
 .photo-service:last-child img { object-position: center 45%; }
-.service-process {
-  margin-block: clamp(2.5rem, 6vw, 4.75rem);
-  padding-block: clamp(1.4rem, 3.3vw, 2.6rem);
-  border-block: 1px solid var(--photo-rule);
-  display: grid;
-  gap: 1rem 2.5rem;
+.process-page-link {
+  margin-block: clamp(1.7rem, 4vw, 3rem);
+  padding-block: 1rem;
+  border-top: 1px solid var(--photo-rule);
 }
-.service-process h2 { font-size: clamp(1.75rem, 3.4vw, 3rem); margin: .35rem 0 0; }
-.service-process ol { counter-reset: process; }
-.service-process li {
-  display: flex;
-  gap: .8rem;
-  align-items: baseline;
-  padding-block: .43rem;
-  border-bottom: 1px solid var(--line);
-}
-.service-process li::before {
-  counter-increment: process;
-  content: counter(process, decimal-leading-zero);
-  color: var(--moss);
-  font-size: .7rem;
-  font-variant-numeric: tabular-nums;
-}
+.photo-process .photo-cta { margin-top: clamp(2.5rem, 6vw, 5rem); }
 
 .photo-cta { background: var(--forest); color: var(--white); }
 .photo-cta-inner {
@@ -194,7 +177,7 @@
   .masthead-photos { grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); }
   .masthead-photos figure { aspect-ratio: 1.95; }
   .masthead-photos .masthead-tall { aspect-ratio: auto; }
-  .home-services, .service-process { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .home-services { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
   .home-photo-strip { grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); }
   .home-photo-strip > figure:first-child { grid-column: auto; }
   .home-photo-strip img, .home-photo-strip > figure:first-child img { aspect-ratio: auto; }

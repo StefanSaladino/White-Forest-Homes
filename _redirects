@@ -2,7 +2,6 @@
 # GitHub Pages uses the matching static redirect files.
 /custom-homes.html /services.html#custom-homes 301!
 /kitchens-interiors.html /services.html#renovations 301!
-/process.html /services.html#how-we-work 301!
 /church-kitchen.html /projects.html#church-kitchen 301!
 /custom-home-case-study.html /projects.html#custom-home 301!
 /full-house-renovation.html /projects.html#full-house-renovation 301!

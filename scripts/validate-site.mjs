@@ -40,7 +40,7 @@ function matches(text, expression) {
   return [...text.matchAll(expression)];
 }
 
-const photoLedPages = new Set(["index.html", "projects.html", "services.html"]);
+const photoLedPages = new Set(["index.html", "projects.html", "services.html", "process.html"]);
 const redirects = new Set();
 
 for (const file of htmlFiles) {
@@ -84,7 +84,7 @@ for (const file of htmlFiles) {
   }
 
   const styles = photoLedPages.has(file)
-    ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=1"]
+    ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=2"]
     : expectedStylesheets;
   if (JSON.stringify(stylesheetRefs) !== JSON.stringify(styles)) {
     failures.push(`${file}: modular stylesheet list is missing or out of order`);
@@ -93,8 +93,8 @@ for (const file of htmlFiles) {
   if (/<figcaption\b/i.test(html)) failures.push(`${file}: visible photo caption`);
   const navigation = html.match(/<ul class="site-nav-list[^"]*">([\s\S]*?)<\/ul>/)?.[1] || "";
   const navTargets = matches(navigation, /href="([^"]+)"/g).map((match) => match[1]);
-  if (navTargets.join(",") !== "index.html,projects.html,services.html,about.html,contact.html") {
-    failures.push(`${file}: expected five direct primary navigation links`);
+  if (navTargets.join(",") !== "index.html,projects.html,services.html,process.html,about.html,contact.html") {
+    failures.push(`${file}: expected six direct primary navigation links`);
   }
 
   const h1Count = matches(html, /<h1\b/gi).length;

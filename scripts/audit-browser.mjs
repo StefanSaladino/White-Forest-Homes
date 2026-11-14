@@ -221,7 +221,7 @@ let browser;
     const a11y=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','best-practice']}});return r.violations.map(v=>({id:v.id,impact:v.impact,description:v.description,nodes:v.nodes.map(n=>({html:n.html,summary:n.failureSummary}))}));});
     if(a11y.length)results.a11y.push({file,width,violations:a11y});
    }
-   if(process.argv.includes('--screenshots')&&(width===390||width===1440||width===768)&&['index.html','contact.html','projects.html','services.html','about.html','privacy.html'].includes(file)){
+   if(process.argv.includes('--screenshots')&&(width===390||width===1440||width===768)&&['index.html','contact.html','projects.html','services.html','process.html','about.html','privacy.html'].includes(file)){
     for (let y = 0; y < await page.evaluate(() => document.body.scrollHeight); y += height) {
      await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), y);
      await page.waitForTimeout(40);
