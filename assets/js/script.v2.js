@@ -281,7 +281,7 @@
       enlargedImage.alt = original.alt || "White Forest work photograph";
       enlargedImage.width = original.width;
       enlargedImage.height = original.height;
-      photoTitle.textContent = enlargedImage.alt;
+      photoTitle.textContent = button.dataset.photoDescription || enlargedImage.alt;
       document.documentElement.classList.add("modal-open");
       document.body.classList.add("modal-open");
       photoViewer.showModal();

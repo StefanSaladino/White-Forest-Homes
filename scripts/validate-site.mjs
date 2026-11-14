@@ -40,9 +40,25 @@ function matches(text, expression) {
   return [...text.matchAll(expression)];
 }
 
+const photoLedPages = new Set(["index.html", "projects.html", "services.html"]);
+const redirects = new Set();
+
 for (const file of htmlFiles) {
   const path = join(root, file);
   const html = await readFile(path, "utf8");
+  const redirect = html.match(/<meta name="redirect-target" content="([^"]+)">/)?.[1];
+  if (redirect) {
+    redirects.add(file);
+    const [page, fragment] = redirect.split("#");
+    if (!photoLedPages.has(page) || !documents.get(page)?.includes(`id="${fragment}"`)) {
+      failures.push(`${file}: missing redirect destination ${redirect}`);
+    }
+    if (!html.includes('content="noindex, follow"') || !html.includes(`href="${redirect}"`)) {
+      failures.push(`${file}: legacy redirect requires noindex and a fallback link`);
+    }
+    continue;
+  }
+
   const markup = html.replace(/(<script\b[^>]*>)[\s\S]*?<\/script>/gi, "$1</script>");
 
   const requiredPatterns = [
@@ -67,8 +83,18 @@ for (const file of htmlFiles) {
     failures.push(`${file}: still references the old monolithic stylesheet`);
   }
 
-  if (JSON.stringify(stylesheetRefs) !== JSON.stringify(expectedStylesheets)) {
+  const styles = photoLedPages.has(file)
+    ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=1"]
+    : expectedStylesheets;
+  if (JSON.stringify(stylesheetRefs) !== JSON.stringify(styles)) {
     failures.push(`${file}: modular stylesheet list is missing or out of order`);
+  }
+
+  if (/<figcaption\b/i.test(html)) failures.push(`${file}: visible photo caption`);
+  const navigation = html.match(/<ul class="site-nav-list[^"]*">([\s\S]*?)<\/ul>/)?.[1] || "";
+  const navTargets = matches(navigation, /href="([^"]+)"/g).map((match) => match[1]);
+  if (navTargets.join(",") !== "index.html,projects.html,services.html,about.html,contact.html") {
+    failures.push(`${file}: expected five direct primary navigation links`);
   }
 
   const h1Count = matches(html, /<h1\b/gi).length;
@@ -117,6 +143,9 @@ for (const file of htmlFiles) {
       if (!matches(contents, /\bid="([^"]+)"/gi).some((match) => match[1] === id)) failures.push(`${file}: missing anchor/symbol target ${ref}`);
     }
     const clean = ref.split("#")[0].split("?")[0];
+    if (clean && documents.get(clean)?.includes('<meta name="redirect-target"')) {
+      failures.push(`${file}: internal link points to legacy redirect ${ref}`);
+    }
     if (!clean || clean === "/") continue;
 
     const target = clean.startsWith("/") ? join(root, clean.slice(1)) : join(root, clean);
@@ -165,29 +194,11 @@ for (const file of rootFiles) {
   }
 }
 
-// Project attribution is content-critical: church renovation photos must never
-// migrate into the separate custom-home story again.
+// Preserve the existing gallery's project attribution after consolidating the pages.
 const churchPhotoNames = ["dark-kitchen-detail", "dark-kitchen-island-angle", "dark-kitchen-island-front", "living-room-fireplace-watermarked", "living-room-wide", "open-plan-living-dining", "open-plan-living-kitchen", "church-brick-and-stone-exterior", "church-arched-entry-detail", "church-entry-staircase", "church-bedroom"];
 const renovationPhotoNames = ["renovation-kitchen-island", "renovation-kitchen-angle", "renovation-kitchen-range", "renovation-washroom-one", "renovation-washroom-two-bath", "renovation-washroom-two-shower"];
-const customStory = documents.get("custom-home-case-study.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
-const churchStory = documents.get("church-kitchen.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
-for (const photo of churchPhotoNames) {
-  if (customStory.includes(`assets/images/${photo}.webp`)) failures.push(`Custom-home case study contains a church photo: ${photo}`);
-  if (!churchStory.includes(`assets/images/${photo}.webp`)) failures.push(`Church case study is missing its photograph: ${photo}`);
-}
-const renovationStory = documents.get("full-house-renovation.html")?.match(/<main[^>]*>([\s\S]*?)<\/main>/)?.[1] || "";
-for (const photo of renovationPhotoNames) {
- if (!renovationStory.includes(`assets/images/${photo}.webp`)) failures.push(`Full-house case study is missing ${photo}`);
- if (customStory.includes(`assets/images/${photo}.webp`) || churchStory.includes(`assets/images/${photo}.webp`)) failures.push(`Renovation photograph assigned to another project: ${photo}`);
-}
-// The second custom home and the arched closet have their own gallery attribution.
 const secondCustomHomePhotos = ["painted-double-doors-shiplap", "shiplap-fireplace-surround", "vaulted-kitchen-navy-island", "blue-house-winter-exterior", "white-kitchen-pendant-lighting", "laundry-built-in-cabinetry"];
 const archedClosetPhoto = "arched-double-doors-hallway";
-for (const photo of [...secondCustomHomePhotos, archedClosetPhoto]) {
-  if ([customStory, churchStory, renovationStory].some(story => story.includes(`assets/images/${photo}.webp`))) {
-    failures.push(`Gallery photo assigned to an unrelated case study: ${photo}`);
-  }
-}
 const additionalPortfolioPhotos = new Map([
   ...secondCustomHomePhotos.map(photo => [photo, "custom-home-two"]),
   [archedClosetPhoto, "carpentry"],
@@ -205,15 +216,23 @@ const additionalPortfolioPhotos = new Map([
 // Only the filter gallery uses data-project-category; featured photos sit in their own case stories.
 const portfolioGallery = documents.get("projects.html")?.match(/<div class="work-gallery">([\s\S]*?)<\/div>/)?.[1];
 if (!portfolioGallery) failures.push("Projects page is missing its filter gallery.");
+const galleryPhotos = new Set();
 for (const figure of (portfolioGallery || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
   const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
   if (!photo) continue;
+  galleryPhotos.add(photo);
+  if (!/data-photo-description="[^"]+"/.test(figure[0])) failures.push(`Portfolio photo is missing a viewer description: ${photo}`);
   const expected = additionalPortfolioPhotos.get(photo) ??
     (churchPhotoNames.includes(photo) ? "church" : renovationPhotoNames.includes(photo) ? "full-house" : "custom-home");
   if (!figure[0].includes(`data-project-category="${expected}"`)) failures.push(`Portfolio photo has the wrong project category: ${photo}`);
 }
 
-console.log(`Validated ${htmlFiles.length} HTML files.`);
+if (galleryPhotos.size !== 40) failures.push(`Expected all 40 gallery photos, found ${galleryPhotos.size}.`);
+const sitemap = await readFile(join(root, "sitemap.xml"), "utf8");
+for (const route of redirects) {
+  if (sitemap.includes(`/${route}</loc>`)) failures.push(`Sitemap includes a legacy redirect: ${route}`);
+}
+console.log(`Validated ${htmlFiles.length - redirects.size} pages and ${redirects.size} legacy redirects.`);
 if (warnings.length) {
   console.log("\nWarnings:");
   warnings.forEach((warning) => console.log(`- ${warning}`));

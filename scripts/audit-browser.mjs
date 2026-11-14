@@ -10,7 +10,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, '.audit-results');
 fs.mkdirSync(output, { recursive: true });
 const axe=fs.readFileSync(require.resolve('axe-core/axe.min.js'),'utf8');
-const pages=fs.readdirSync(root).filter(f=>f.endsWith('.html'));
+const pages=fs.readdirSync(root).filter(f=>f.endsWith('.html') && !fs.readFileSync(path.join(root,f),'utf8').includes('<meta name="redirect-target"'));
 const sizes=[[320,568],[360,640],[390,844],[430,932],[568,320],[667,375],[672,900],[768,1024],[1024,768],[1280,800],[1440,900],[1920,1080],[2560,1440]];
 const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.svg':'image/svg+xml','.webp':'image/webp','.jpg':'image/jpeg','.webmanifest':'application/manifest+json'};
 const server=http.createServer((q,r)=>{
@@ -67,13 +67,13 @@ async function runInteractions(browser, base) {
 
  await page.setViewportSize({width:320,height:320});
  await page.getByRole('button',{name:'Cookie settings',exact:true}).click();
- assert(await page.locator('dialog').evaluate(e=>e.open));
+ assert(await page.locator('[data-cookie-dialog]').evaluate(e=>e.open));
  await page.addScriptTag({content:axe});
  const consentViolations = await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations);
  assert.deepEqual(consentViolations.map(v=>v.id),[],'Cookie dialog accessibility');
  await page.getByRole('checkbox',{name:'Allow analytics cookies'}).check();
  await page.getByRole('button',{name:'Save preferences',exact:true}).click();
- assert.equal(await page.locator('dialog').evaluate(e=>e.open),false);
+ assert.equal(await page.locator('[data-cookie-dialog]').evaluate(e=>e.open),false);
  assert.equal(await page.locator('html').evaluate(e=>e.classList.contains('modal-open')),false);
  await page.reload();
  assert.equal(await page.locator('[data-cookie-banner]').isVisible(),false);
@@ -94,21 +94,25 @@ async function runInteractions(browser, base) {
  }
  check('Direct and clicked anchor headings stay below the sticky header at 320, 768 and 1440px');
  await page.goto(base+'/index.html');
- await page.locator('.project-card h3 a').first().click();
- assert(page.url().endsWith('projects.html#lakeside-custom-home'));
- await assertAnchor('lakeside-custom-home');
- for(const [category,count] of [['custom-homes',2],['renovations',3],['interiors',3],['all',6]]){
+ await page.getByRole('link',{name:'View our projects',exact:true}).click();
+ assert(page.url().endsWith('projects.html'));
+ for(const [category,count] of [['custom-home',13],['renovations',17],['additions',5],['carpentry',5],['all',40]]){
   await page.locator(`[data-project-filter="${category}"]`).click();
   assert.equal(await page.locator('[data-project-category]:visible').count(),count);
   assert.equal(await page.locator(`[data-project-filter="${category}"]`).getAttribute('aria-pressed'),'true');
  }
- check('Homepage project links and all five portfolio filters');
- await page.goto(base+'/renovations-additions.html');
- assert.match(await page.locator('h1').innerText(),/home you love/);
- const summary=page.locator('summary').first();
- await summary.press('Enter');
- assert(await summary.evaluate(e=>e.parentElement.open));
- check('Renovations route has its own content and FAQ keyboard interaction');
+ const trigger=page.locator('[data-photo-expand]').first();
+ await trigger.press('Enter');
+ assert(await page.locator('[data-photo-viewer]').evaluate(dialog=>dialog.open));
+ assert.equal(await page.locator('#photo-viewer-title').innerText(),await trigger.getAttribute('data-photo-description'));
+ await page.keyboard.press('Escape');
+ assert(await trigger.evaluate(el=>el===document.activeElement));
+ check('Direct project link, gallery filters, viewer description and keyboard focus return');
+
+ await page.goto(base+'/White-Forest-Homes/renovations-additions.html?utm_source=review#additions');
+ await page.waitForURL('**/services.html?utm_source=review#additions');
+ await assertAnchor('additions');
+ check('Legacy service route preserves the addition anchor and campaign query');
 
  await page.goto(base+'/contact.html');
  await page.locator('[type="submit"]').click();
@@ -125,9 +129,9 @@ async function runInteractions(browser, base) {
  const fallback=await nojs.newPage();
  await fallback.goto(base+'/index.html');
  assert(await fallback.locator('.site-nav a').first().isVisible());
- assert(await fallback.locator('.intro-copy h2').isVisible());
+ assert(await fallback.locator('.masthead-brand').isVisible());
  await fallback.locator('.site-nav a[href="projects.html"]').click();
- assert.equal(await fallback.locator('[data-project-category]:visible').count(),6);
+ assert.equal(await fallback.locator('[data-project-category]:visible').count(),40);
  check('Navigation, content and all projects remain available without JavaScript');
  await nojs.close();
 
@@ -217,7 +221,7 @@ let browser;
     const a11y=await page.evaluate(async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','best-practice']}});return r.violations.map(v=>({id:v.id,impact:v.impact,description:v.description,nodes:v.nodes.map(n=>({html:n.html,summary:n.failureSummary}))}));});
     if(a11y.length)results.a11y.push({file,width,violations:a11y});
    }
-   if(process.argv.includes('--screenshots')&&(width===390||width===1440||width===768)&&['index.html','contact.html','projects.html','services.html','renovations-additions.html','privacy.html'].includes(file)){
+   if(process.argv.includes('--screenshots')&&(width===390||width===1440||width===768)&&['index.html','contact.html','projects.html','services.html','about.html','privacy.html'].includes(file)){
     for (let y = 0; y < await page.evaluate(() => document.body.scrollHeight); y += height) {
      await page.evaluate(y => scrollTo({ top: y, behavior: 'instant' }), y);
      await page.waitForTimeout(40);

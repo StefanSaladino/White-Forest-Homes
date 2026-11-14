@@ -1,9 +1,15 @@
-# Preserve current public routes during the redesign migration.
-/services  /services.html  301
-/contact   /contact.html   301
-/home      /               301
+# Keep legacy links working after consolidating the navigation.
+# GitHub Pages uses the matching static redirect files.
+/custom-homes.html /services.html#custom-homes 301!
+/kitchens-interiors.html /services.html#renovations 301!
+/process.html /services.html#how-we-work 301!
+/church-kitchen.html /projects.html#church-kitchen 301!
+/custom-home-case-study.html /projects.html#custom-home 301!
+/full-house-renovation.html /projects.html#full-house-renovation 301!
+/outdoor-living.html /services.html#additions 301!
 
-# Netlify fallback for unknown static routes.
-/*  /404.html  404
+/services /services.html 301
+/contact /contact.html 301
+/home / 301
 
-/outdoor-living.html /renovations-additions.html 301
+/* /404.html 404
