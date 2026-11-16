@@ -96,12 +96,11 @@ async function runInteractions(browser, base) {
  await page.goto(base+'/index.html');
  await page.getByRole('link',{name:'View our projects',exact:true}).click();
  assert(page.url().endsWith('projects.html'));
- for(const [category,count] of [['custom-home',2],['renovations',2],['additions',1],['carpentry',1],['all',6]]){
-  await page.locator(`[data-project-filter="${category}"]`).click();
-  assert.equal(await page.locator('[data-project-category]:visible').count(),count);
-  assert.equal(await page.locator(`[data-project-filter="${category}"]`).getAttribute('aria-pressed'),'true');
- }
- await page.getByRole('link',{name:'Church Renovation',exact:true}).click();
+ assert.equal(await page.locator('.showcase-featured-grid .showcase-tile').count(),3);
+ assert.equal(await page.locator('.showcase-photo-grid figure').count(),40);
+ await page.locator('.showcase-category-nav a[href="#custom-homes-gallery"]').click();
+ await assertAnchor('custom-homes-gallery');
+ await page.locator('.showcase-featured-grid a[href="church-kitchen.html"]').click();
  assert(page.url().endsWith('church-kitchen.html'));
  assert.equal(await page.locator('.work-gallery figure').count(),11);
  const trigger=page.locator('[data-photo-expand]').first();
@@ -112,7 +111,7 @@ async function runInteractions(browser, base) {
  assert(await trigger.evaluate(el=>el===document.activeElement));
  await page.getByRole('link',{name:'All projects'}).first().click();
  assert(page.url().endsWith('projects.html'));
- check('Showcase filters, direct project links, image viewer and return navigation');
+ check('Showcase category jumps, direct project links, image viewer and return navigation');
 
  await page.goto(base+'/White-Forest-Homes/renovations-additions.html?utm_source=review#additions');
  await page.waitForURL('**/services.html?utm_source=review#additions');
@@ -136,7 +135,7 @@ async function runInteractions(browser, base) {
  assert(await fallback.locator('.site-nav a').first().isVisible());
  assert(await fallback.locator('.masthead-brand').isVisible());
  await fallback.locator('.site-nav a[href="projects.html"]').click();
- assert.equal(await fallback.locator('[data-project-category]:visible').count(),6);
+ assert.equal(await fallback.locator('.showcase-featured-grid a:visible').count(),3);
  check('Navigation, content and all projects remain available without JavaScript');
  await nojs.close();
 

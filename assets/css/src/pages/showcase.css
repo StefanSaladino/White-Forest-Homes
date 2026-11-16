@@ -1,48 +1,76 @@
-/* Project showcase and featured work pages. */
-.showcase-list { margin-block: 0 clamp(2.8rem, 6vw, 5rem); }
-.showcase-row {
-  position: relative;
-  padding-block: clamp(1.5rem, 3.6vw, 3rem);
-  border-bottom: 1px solid var(--photo-rule);
-}
-.showcase-link {
+/* Showcase category navigation, featured projects and project galleries. */
+.showcase-category-nav, .showcase-featured-grid, .showcase-photo-grid {
   display: grid;
-  align-items: center;
-  gap: clamp(1rem, 3.8vw, 3.4rem);
-  color: inherit;
-  text-decoration: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--photo-gap);
 }
-.showcase-link:hover .text-link { text-decoration: underline; }
-.showcase-row:first-child { padding-top: .5rem; }
-.showcase-row[hidden] { display: none; }
-.showcase-link > * { min-width: 0; }
+.showcase-index .photo-page-intro { text-align: center; }
+.showcase-index .photo-page-intro p { margin-inline: auto; }
+.showcase-featured, .showcase-category { padding-block-start: clamp(2.8rem, 7vw, 5rem); }
+.showcase-category { position: relative; scroll-margin-top: calc(var(--header-height, 5rem) + 1.25rem); }
 .showcase-anchor { position: absolute; inset: 0 auto auto 0; }
-.showcase-photo { display: block; overflow: hidden; background: var(--paper-2); }
-.showcase-photo img, .showcase-hero img {
+.showcase-section-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .6rem 1rem;
+  margin-bottom: 1rem;
+}
+.showcase-section-head h2 { margin: 0; }
+.showcase-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--forest);
+  color: #fff;
+  text-decoration: none;
+  min-width: 0;
+}
+.showcase-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgb(8 22 15 / 85%), transparent 70%);
+  pointer-events: none;
+}
+.showcase-tile img, .showcase-photo-grid img, .showcase-hero img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center 58%;
 }
-.showcase-row:first-child .showcase-photo img { aspect-ratio: 3 / 2; }
-.showcase-copy h2 { margin: .35rem 0 .7rem; font-size: clamp(1.85rem, 4.3vw, 3.65rem); }
-.showcase-copy p:not(.photo-kicker) { margin-bottom: .5rem; max-width: 44ch; color: var(--ink-soft); }
-.showcase-copy .text-link, .showcase-back { min-height: 2.75rem; align-items: center; }
+.showcase-tile-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: .5rem;
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  margin: 0;
+  padding: clamp(.7rem, 2.2vw, 1.3rem);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  line-height: 1.16;
+}
+.showcase-featured-grid { grid-template-columns: minmax(0, 1fr); }
+.showcase-featured-grid .showcase-tile img { aspect-ratio: 3 / 2; }
+.showcase-photo-grid figure { min-width: 0; }
+.showcase-photo-grid .expandable-photo { display: block; width: 100%; }
+.showcase-index .photo-cta { margin-top: clamp(3rem, 7vw, 5rem); }
+.showcase-back { min-height: 2.75rem; align-items: center; }
 .showcase-detail .photo-page-intro .showcase-back { margin-bottom: .8rem; }
-.showcase-detail .showcase-hero img { aspect-ratio: 4 / 3; }
 .showcase-gallery { padding-block: clamp(2rem, 5vw, 4rem); }
 .showcase-gallery h2 { margin: 0 0 1rem; }
 .showcase-gallery .work-gallery { margin-bottom: .8rem; }
 .showcase-gallery .work-gallery figure { margin: 0 0 var(--photo-gap); }
 @media (min-width: 48rem) {
-  .showcase-link { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
-  .showcase-row:nth-child(even) .showcase-link { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
-  .showcase-row:nth-child(even) .showcase-photo { grid-column: 2; grid-row: 1; }
-  .showcase-row:nth-child(even) .showcase-copy { grid-column: 1; grid-row: 1; }
-  .showcase-row:first-child .showcase-link { grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); }
+  .showcase-category-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .showcase-featured-grid, .showcase-photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .showcase-detail .showcase-hero img { aspect-ratio: 2 / 1; max-height: 36rem; }
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .showcase-photo img { transition: transform .32s ease; }
-  .showcase-link:hover img { transform: scale(1.025); }
+  .showcase-tile img { transition: transform .32s ease; }
+  .showcase-tile:hover img { transform: scale(1.025); }
 }

@@ -3,7 +3,7 @@
 The public navigation has six destinations: Home, Projects, Services, Process, About and Contact. Privacy and form confirmation remain as utility pages.
 
 - Home opens with the existing White Forest tree mark and wordmark, followed by the church kitchen and the second custom home's winter exterior.
-- Projects showcases four featured projects and two collections (additions and carpentry). Filters operate on the showcase itself. Each feature links directly to one page with its own gallery. All 40 original photos remain assigned to the same work.
+- Projects starts with photo links that jump to four gallery sections on the same page. Three featured projects link directly to detail pages. Other project and collection links appear in the relevant gallery section.
 - Services has four short descriptions with photos. Process has a dedicated page with four steps and project photography.
 - About and Contact retain their content and layouts apart from the shared navigation and removal of captions. The About photo is still a placeholder for Danny's future headshot.
 - Photo descriptions appear in the enlargement dialog for gallery images. Hero and supporting photos are static.

@@ -96,7 +96,7 @@ for (const file of htmlFiles) {
   const styles = photoLedPages.has(file)
     ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=4"]
     : expectedStylesheets;
-  if (showcasePages.has(file)) styles.push("assets/css/src/pages/showcase.css?v=1");
+  if (showcasePages.has(file)) styles.push("assets/css/src/pages/showcase.css?v=2");
   if (JSON.stringify(stylesheetRefs) !== JSON.stringify(styles)) {
     failures.push(`${file}: modular stylesheet list is missing or out of order`);
   }
@@ -224,11 +224,20 @@ const additionalPortfolioPhotos = new Map([
   ["carpentry-wood-bench-detail", "carpentry"],
   ["carpentry-wood-bench-installation", "carpentry"],
 ]);
+const showcase = documents.get("projects.html") || "";
+const featured = showcase.match(/<div class="showcase-featured-grid">([\s\S]*?)<\/div>/)?.[1] || "";
+const featuredLinks = matches(featured, /<a\b[^>]*href="([^"]+)"/g).map(match => match[1]);
+if (featuredLinks.join(",") !== "church-kitchen.html,full-house-renovation.html,custom-home-case-study.html") {
+  failures.push("The showcase must feature the church, whole-home renovation and woodland custom home.");
+}
+if (matches(showcase, /<button\b[^>]*data-photo-expand\b/g).length !== 40) {
+  failures.push("The showcase must keep all 40 gallery photos.");
+}
 const galleryPhotos = new Set();
 for (const [category, file] of projectPages) {
   const page = documents.get(file) || "";
   const listing = documents.get("projects.html") || "";
-  if (!listing.includes(`href="${file}" aria-labelledby="${category}-title"`)) {
+  if (!listing.includes(`href="${file}"`)) {
     failures.push(`Showcase is missing a direct link to ${file}`);
   }
   const gallery = page.match(/<div class="work-gallery">([\s\S]*?)<\/div>/)?.[1];

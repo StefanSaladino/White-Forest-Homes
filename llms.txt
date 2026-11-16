@@ -10,4 +10,4 @@ Phone: +1-705-970-6325
 Email: Whiteforesthomes@hotmail.com
 Instagram: https://www.instagram.com/the_white_forests/
 
-Projects is a showcase with direct links to six feature pages: church-kitchen.html, full-house-renovation.html, custom-home-case-study.html, winter-custom-home.html, home-addition-projects.html, custom-carpentry-projects.html. Additions and carpentry are collections of work. Project addresses, budgets and completion dates are not specified.
+Projects starts with category links and features three projects. Project and collection pages are: church-kitchen.html, full-house-renovation.html, custom-home-case-study.html, winter-custom-home.html, home-addition-projects.html, custom-carpentry-projects.html. Additions and carpentry are collections of work. Project addresses, budgets and completion dates are not specified.
