@@ -41,6 +41,16 @@ function matches(text, expression) {
 }
 
 const photoLedPages = new Set(["index.html", "projects.html", "services.html", "process.html"]);
+const projectPages = new Map(Object.entries({
+  "church": "church-kitchen.html",
+  "full-house": "full-house-renovation.html",
+  "custom-home": "custom-home-case-study.html",
+  "custom-home-two": "winter-custom-home.html",
+  "additions": "home-addition-projects.html",
+  "carpentry": "custom-carpentry-projects.html"
+}));
+const showcasePages = new Set(["projects.html", ...projectPages.values()]);
+for (const file of projectPages.values()) photoLedPages.add(file);
 const redirects = new Set();
 
 for (const file of htmlFiles) {
@@ -86,6 +96,7 @@ for (const file of htmlFiles) {
   const styles = photoLedPages.has(file)
     ? [...expectedStylesheets, "assets/css/src/pages/photo-led.css?v=4"]
     : expectedStylesheets;
+  if (showcasePages.has(file)) styles.push("assets/css/src/pages/showcase.css?v=1");
   if (JSON.stringify(stylesheetRefs) !== JSON.stringify(styles)) {
     failures.push(`${file}: modular stylesheet list is missing or out of order`);
   }
@@ -213,20 +224,27 @@ const additionalPortfolioPhotos = new Map([
   ["carpentry-wood-bench-detail", "carpentry"],
   ["carpentry-wood-bench-installation", "carpentry"],
 ]);
-// Only the filter gallery uses data-project-category; featured photos sit in their own case stories.
-const portfolioGallery = documents.get("projects.html")?.match(/<div class="work-gallery">([\s\S]*?)<\/div>/)?.[1];
-if (!portfolioGallery) failures.push("Projects page is missing its filter gallery.");
 const galleryPhotos = new Set();
-for (const figure of (portfolioGallery || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
-  const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
-  if (!photo) continue;
-  galleryPhotos.add(photo);
-  if (!/data-photo-description="[^"]+"/.test(figure[0])) failures.push(`Portfolio photo is missing a viewer description: ${photo}`);
-  const expected = additionalPortfolioPhotos.get(photo) ??
-    (churchPhotoNames.includes(photo) ? "church" : renovationPhotoNames.includes(photo) ? "full-house" : "custom-home");
-  if (!figure[0].includes(`data-project-category="${expected}"`)) failures.push(`Portfolio photo has the wrong project category: ${photo}`);
+for (const [category, file] of projectPages) {
+  const page = documents.get(file) || "";
+  const listing = documents.get("projects.html") || "";
+  if (!listing.includes(`href="${file}" aria-labelledby="${category}-title"`)) {
+    failures.push(`Showcase is missing a direct link to ${file}`);
+  }
+  const gallery = page.match(/<div class="work-gallery">([\s\S]*?)<\/div>/)?.[1];
+  if (!gallery) failures.push(`${file}: missing photo gallery`);
+  if (!page.includes('href="projects.html">← All projects')) failures.push(`${file}: missing return link`);
+  for (const figure of (gallery || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
+    const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
+    if (!photo) continue;
+    if (galleryPhotos.has(photo)) failures.push(`Photo appears in more than one gallery: ${photo}`);
+    galleryPhotos.add(photo);
+    if (!/data-photo-description="[^"]+"/.test(figure[0])) failures.push(`Missing viewer description: ${photo}`);
+    const expected = additionalPortfolioPhotos.get(photo) ??
+      (churchPhotoNames.includes(photo) ? "church" : renovationPhotoNames.includes(photo) ? "full-house" : "custom-home");
+    if (category !== expected) failures.push(`Photo has the wrong project page: ${photo}`);
+  }
 }
-
 if (galleryPhotos.size !== 40) failures.push(`Expected all 40 gallery photos, found ${galleryPhotos.size}.`);
 const sitemap = await readFile(join(root, "sitemap.xml"), "utf8");
 for (const route of redirects) {
