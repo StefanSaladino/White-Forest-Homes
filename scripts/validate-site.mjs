@@ -242,7 +242,7 @@ for (const [category, file] of projectPages) {
   }
   const gallery = page.match(/<div class="work-gallery">([\s\S]*?)<\/div>/)?.[1];
   if (!gallery) failures.push(`${file}: missing photo gallery`);
-  if (!page.includes('href="projects.html">← All projects')) failures.push(`${file}: missing return link`);
+  if (!page.includes('href="projects.html">All projects')) failures.push(`${file}: missing return link`);
   for (const figure of (gallery || "").matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/g)) {
     const photo = figure[0].match(/<img[^>]*src="assets\/images\/([^"/]+)\.webp"/)?.[1];
     if (!photo) continue;
