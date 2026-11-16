@@ -45,7 +45,6 @@ const projectPages = new Map(Object.entries({
   "church": "church-kitchen.html",
   "full-house": "full-house-renovation.html",
   "custom-home": "custom-home-case-study.html",
-  "custom-home-two": "winter-custom-home.html",
   "additions": "home-addition-projects.html",
   "carpentry": "custom-carpentry-projects.html"
 }));
@@ -254,7 +253,13 @@ for (const [category, file] of projectPages) {
     if (category !== expected) failures.push(`Photo has the wrong project page: ${photo}`);
   }
 }
-if (galleryPhotos.size !== 40) failures.push(`Expected all 40 gallery photos, found ${galleryPhotos.size}.`);
+const customHomesGallery = showcase.match(/<section\b[^>]*id="custom-homes-gallery"[^>]*>([\s\S]*?)<\/section>/)?.[1] || "";
+for (const photo of secondCustomHomePhotos) {
+  if (!customHomesGallery.includes(`src="assets/images/${photo}.webp"`)) {
+    failures.push(`Custom Homes gallery is missing ${photo}.`);
+  }
+}
+if (galleryPhotos.size !== 34) failures.push(`Expected 34 photos on project and collection pages, found ${galleryPhotos.size}.`);
 const sitemap = await readFile(join(root, "sitemap.xml"), "utf8");
 for (const route of redirects) {
   if (sitemap.includes(`/${route}</loc>`)) failures.push(`Sitemap includes a legacy redirect: ${route}`);
