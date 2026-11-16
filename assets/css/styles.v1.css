@@ -145,6 +145,11 @@ p:last-child {
   outline-offset: 4px;
 }
 
+/* Jump targets receive focus for navigation without outlining entire sections. */
+:where(main, section, article, aside, div, span, h1, h2, h3, h4)[tabindex="-1"]:focus {
+  outline: none;
+}
+
 ::selection {
   background: var(--forest);
   color: var(--white);
